@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Idea Box</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <nav>
+      <h1>IdeaBox Redux</h1>
+      <div>
+        <p>Filter Starred Ideas</p>
+        <button type="button">Show Starred Ideas</button>
+      </div>
+      <p>Filter by Quality</p>
+      <h2>Swill</h2>
+      <h2>Plausible</h2>
+      <h2>Genius</h2>
+      <form>
+        <label for="new-quality"></label>
+        <input type="text" id="new-quality">
+        <button type="button">Add New Quality</button>
+      </form>  
+    </nav>
+    <main>
+      <section>
+        <form>
+          <label for="title">Title</label>
+          <input type="text" id="title">
+          <label for="body-text">Body</label>
+          <textarea id="body-text"></textarea>
+          <button>Save</button>
+          <button>
+            <img src="" alt="search-icon">
+          </button>
+          <input type="text" placeholder="Search ideas">
+        </form>
+      </section>
+      <section>
+        <article>
+          <header>
+            <img src="" alt="star">
+            <img src="" alt="x">
+          </header>
+          <div>
+            <h3>Idea title</h3>
+            <p>Idea body. Don't ever play yourself. Every chance I get, I water the plants, Lion! Cloth talk.</p>
+          </div>
+          <footer>
+            <button type="button">
+              <img src="" alt="upvote">
+            </button>
+            <p>Quality:<span>Swill</span></p>
+            <button type="button">
+              <img src="" alt="downvote">
+            </button>
+          </footer>
+        </article>
+      </section>
+    </main>
+  </body>
+  <script type="text/javascript" src="idea.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+</html>
+
