@@ -7,8 +7,10 @@ class Idea {
     this.quality = 0;
   }
 
-  saveToStorage() {
-    
+  saveToStorage(obj) {
+    // var savedIdea = 
+    localStorage.setItem("ideaArray", JSON.stringify(obj));
+    // console.log(savedIdea);
   }
 
   deleteFromStorage() {
