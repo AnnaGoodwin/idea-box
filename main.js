@@ -10,7 +10,8 @@ var ideasArray = [];
 
 //**** On Page Load ******
 disableSaveButton();
-
+getFromStorage();
+persistCards();
 
 // Event Listeners
 form.addEventListener('keyup', disableSaveButton);
@@ -33,12 +34,11 @@ function emptyInputs() {
 }
 
 function handleSaveButton() {
-  displayIdeaCard();
   instaniateIdea(titleInput.value, textBody.value);
   emptyInputs();
 }
 
-function displayIdeaCard() {
+function displayIdeaCard(title, body) {
   mainSectionBottom.insertAdjacentHTML('afterbegin',
     `<article class="section__article">
       <header class="article__header">
@@ -46,8 +46,8 @@ function displayIdeaCard() {
         <img class="header__img--x" src="images/delete.svg" alt="x">
       </header>
       <div class="article__div">
-        <h3 class="div__h3--title">${titleInput.value}</h3>
-        <p class="div__p--text">${bodyInput.value}</p>
+        <h3 class="div__h3--title">${title}</h3>
+        <p class="div__p--text">${body}</p>
       </div>
       <footer class="article__footer">
         <button class="footer__button--upvote" type="button">
@@ -66,6 +66,18 @@ function instaniateIdea(title, body) {
   ideasArray.push(newIdea);
   console.log(newIdea)
   newIdea.saveToStorage(ideasArray);
+  displayIdeaCard(title, body)
+}
+
+function getFromStorage() {
+  ideasArray = JSON.parse(localStorage.getItem("ideaArray"));
+  console.log(ideasArray);
+}
+
+function persistCards() {
+  ideasArray.forEach(function(element) {
+    displayIdeaCard(element.title, element.body);
+  })
 }
 
 function deleteIdeaCard() {
