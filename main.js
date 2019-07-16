@@ -33,6 +33,7 @@ function emptyInputs() {
 
 function handleSaveButton() {
   displayIdeaCard(titleInput.value, textBody.value);
+  instaniateIdea(titleInput.value, textBody.value);
   emptyInputs();
 }
 
@@ -57,6 +58,12 @@ function displayIdeaCard(ideaTitle, ideaBody) {
         </button>
       </footer>
     </article>`)
+}
+
+function instaniateIdea(title, body) {
+  var newIdea = new Idea(title, body)
+  console.log(newIdea)
+  newIdea.saveToStorage();
 }
 
 function deleteIdeaCard() {
