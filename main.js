@@ -4,7 +4,6 @@ var titleInput = document.querySelector('.form__input--title');
 var bodyInput = document.querySelector('.form__textarea--body');
 var form = document.querySelector('.section__form');
 var mainSectionBottom = document.querySelector('.main__section--bottom');
-var titleInput = document.querySelector('.form__input--title');
 var textBody = document.querySelector('.form__textarea--body');
 // var ideaCard = document.querySelector('.section__article');
 
@@ -26,8 +25,15 @@ function disableSaveButton(){
   }
 }
 
+function emptyInputs() {
+  titleInput.value = '';
+  bodyInput.value = '';
+  disableSaveButton();
+}
+
 function handleSaveButton() {
   displayIdeaCard(titleInput.value, textBody.value);
+  emptyInputs();
 }
 
 function displayIdeaCard(ideaTitle, ideaBody) {
