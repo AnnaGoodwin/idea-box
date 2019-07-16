@@ -34,8 +34,8 @@ function displayIdeaCard(ideaTitle, ideaBody) {
   mainSectionBottom.insertAdjacentHTML('afterbegin',
     `<article class="section__article">
       <header class="article__header">
-        <img class="header__img--star" src="" alt="star">
-        <img class="header__img--x" src="" alt="x">
+        <img class="header__img--star" src="images/star.svg" alt="star">
+        <img class="header__img--x" src="images/delete.svg" alt="x">
       </header>
       <div class="article__div">
         <h3 class="div__h3--title">${ideaTitle}</h3>
@@ -43,11 +43,11 @@ function displayIdeaCard(ideaTitle, ideaBody) {
       </div>
       <footer class="article__footer">
         <button class="footer__button--upvote" type="button">
-          <img class="button__img--upvote" src="" alt="upvote">
+          <img class="button__img--upvote" src="images/upvote.svg" alt="upvote">
         </button>
         <p class="footer__p--quality">Quality:<span>Swill</span></p>
         <button class="footer__button--downvote" type="button">
-          <img class="button__img--downvote" src="" alt="downvote">
+          <img class="button__img--downvote" src="images/downvote.svg" alt="downvote">
         </button>
       </footer>
     </article>`)

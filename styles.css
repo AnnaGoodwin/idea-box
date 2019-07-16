@@ -58,3 +58,9 @@ h1 {
   background-color: #EAEAF4;
   height: 60vh;
 }
+
+article img {
+  border-radius: 50%;
+  height: 2em;
+  width: 2em;
+}
