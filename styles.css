@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
   margin: auto 0;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 body {
@@ -27,11 +27,11 @@ nav {
 }
 
 h1 {
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 .nav__div--stars {
-  border-top: 2px #5356A4;
+  border-top: 2px solid #5356A4;
   height: 10vh;
   width: 90%;
 }
