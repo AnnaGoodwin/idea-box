@@ -6,6 +6,7 @@ var form = document.querySelector('.section__form');
 var mainSectionBottom = document.querySelector('.main__section--bottom');
 var titleInput = document.querySelector('.form__input--title');
 var textBody = document.querySelector('.form__textarea--body');
+// var ideaCard = document.querySelector('.section__article');
 
 //**** On Page Load ******
 disableSaveButton();
@@ -14,7 +15,7 @@ disableSaveButton();
 // Event Listeners
 form.addEventListener('keyup', disableSaveButton);
 saveButton.addEventListener('click', handleSaveButton);
-
+mainSectionBottom.addEventListener('click', deleteIdeaCard);
 
 // Functions
 function disableSaveButton(){
@@ -50,4 +51,11 @@ function displayIdeaCard(ideaTitle, ideaBody) {
         </button>
       </footer>
     </article>`)
+}
+
+function deleteIdeaCard() {
+  var ideaCard = document.querySelector('.section__article');
+  if(event.target.classList.contains('header__img--x')) {
+    ideaCard.remove();
+  }
 }
