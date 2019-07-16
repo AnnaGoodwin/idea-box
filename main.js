@@ -4,6 +4,8 @@ var titleInput = document.querySelector('.form__input--title');
 var bodyInput = document.querySelector('.form__textarea--body');
 var form = document.querySelector('.section__form');
 var mainSectionBottom = document.querySelector('.main__section--bottom');
+var titleInput = document.querySelector('.form__input--title');
+var textBody = document.querySelector('.form__textarea--body');
 
 //**** On Page Load ******
 disableSaveButton();
@@ -15,7 +17,6 @@ saveButton.addEventListener('click', handleSaveButton);
 
 
 // Functions
-
 function disableSaveButton(){
   if (titleInput.value === '' || bodyInput.value === '') {
     saveButton.disabled = true;
@@ -27,11 +28,6 @@ function disableSaveButton(){
 function handleSaveButton() {
   displayIdeaCard(titleInput.value, textBody.value);
 }
-
-//*****Eduardo testing code*****
-var titleInput = document.querySelector('.form__input--title');
-var textBody = document.querySelector('.form__textarea--body');
-
 
 function displayIdeaCard(ideaTitle, ideaBody) {
   mainSectionBottom.insertAdjacentHTML('afterbegin',
@@ -55,18 +51,3 @@ function displayIdeaCard(ideaTitle, ideaBody) {
       </footer>
     </article>`)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
