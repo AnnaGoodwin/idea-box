@@ -16,7 +16,6 @@ class Idea {
     ideasArray = ideasArray.filter(idea => { return parseInt(identity) !== idea.id})
     this.saveToStorage(ideasArray)
     console.log(ideasArray)
-    // then run save to storage again (invoke)
   }
 
   updateIdea() {
