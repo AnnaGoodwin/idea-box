@@ -13,7 +13,7 @@ class Idea {
 
   deleteFromStorage() {
     // pass in new array as parameter
-    // delete entire array from storage
+    // delete entire array from storage / push up new array
     // then run save to storage again (invoke)
   }
 

@@ -89,6 +89,6 @@ function findIndex() {
   });
   console.log("array", ideasArray);
   console.log("index", index);
-  ideasArray.splice(index, 1);
+  // ideasArray.splice(index, 1);
   console.log(ideasArray);
 }
