@@ -7,9 +7,9 @@ class Idea {
     this.quality = 0;
   }
 
-  saveToStorage(obj) {
+  saveToStorage(array) {
     // var savedIdea = 
-    localStorage.setItem("ideaArray", JSON.stringify(obj));
+    localStorage.setItem("ideaArray", JSON.stringify(array));
     // console.log(savedIdea);
   }
 
