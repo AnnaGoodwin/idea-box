@@ -77,5 +77,18 @@ function deleteIdeaCard() {
   var ideaCard = document.querySelector('.section__article');
   if(event.target.classList.contains('header__img--x')) {
     ideaCard.remove();
+    findIndex();
+    // ideasArray.saveToStorage(ideasArray);
   }
+}
+
+function findIndex() {
+  var identity = event.target.closest('.section__article').dataset.identifier;
+  var index = ideasArray.findIndex(obj => {
+    return parseInt(identity) === obj.id
+  });
+  console.log("array", ideasArray);
+  console.log("index", index);
+  // ideasArray.splice(index, 1);
+  console.log(ideasArray);
 }
