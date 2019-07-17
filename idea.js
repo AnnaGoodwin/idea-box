@@ -1,19 +1,21 @@
 class Idea {
-  constructor(title, body) {
-    this.id = Date.now();
-    this.title = title;
-    this.body = body;
-    this.star = false;
-    this.quality = 0;
+  constructor(ideaObj) {
+    this.id = ideaObj.id || Date.now();
+    this.title = ideaObj.title;
+    this.body = ideaObj.body;
+    this.star = ideaObj.star || false;
+    this.quality = ideaObj.quality || 0;
   }
 
   saveToStorage(array) {
     localStorage.setItem("ideaArray", JSON.stringify(array));
   }
 
-  deleteFromStorage() {
-    // pass in new array as parameter
-    // delete entire array from storage / push up new array
+  deleteFromStorage(identity) {
+    console.log("id", identity)
+    ideasArray = ideasArray.filter(idea => { return parseInt(identity) !== idea.id})
+    this.saveToStorage(ideasArray)
+    console.log(ideasArray)
     // then run save to storage again (invoke)
   }
 

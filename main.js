@@ -5,8 +5,8 @@ var bodyInput = document.querySelector('.form__textarea--body');
 var form = document.querySelector('.section__form');
 var mainSectionBottom = document.querySelector('.main__section--bottom');
 var textBody = document.querySelector('.form__textarea--body');
-var ideasArray = JSON.parse(localStorage.getItem("ideaArray")) || [];
-
+// var ideasArray = JSON.parse(localStorage.getItem("ideaArray")) || [];
+var ideasArray = JSON.parse(localStorage.getItem("ideaArray")).map(element => {return new Idea(element)}) || [];
 //**** On Page Load ******
 disableSaveButton();
 persistCards();
@@ -23,6 +23,11 @@ function disableSaveButton(){
   } else {
     saveButton.disabled = false;
   }
+}
+
+function remakeArray() {ideasArray = ideasArray.map( element =>{
+ return  new Idea(element)
+})
 }
 
 function emptyInputs() {
@@ -60,7 +65,7 @@ function displayIdeaCard(newIdeaObj) {
 }
 
 function instaniateIdea() {
-  var newIdea = new Idea(titleInput.value, bodyInput.value);
+  var newIdea = new Idea({title:titleInput.value, body:bodyInput.value});
   ideasArray.push(newIdea);
   console.log(newIdea);
   newIdea.saveToStorage(ideasArray);
@@ -73,22 +78,19 @@ function persistCards() {
   });
 }
 
-function deleteIdeaCard() {
+function deleteIdeaCard(event) {
   var ideaCard = document.querySelector('.section__article');
   if(event.target.classList.contains('header__img--x')) {
     ideaCard.remove();
-    findIndex();
-    // ideasArray.saveToStorage(ideasArray);
+    findIndex(event);
   }
 }
 
-function findIndex() {
+function findIndex(event) {
   var identity = event.target.closest('.section__article').dataset.identifier;
-  var index = ideasArray.findIndex(obj => {
+  var targetIndex = ideasArray.findIndex(obj => {
     return parseInt(identity) === obj.id
   });
-  console.log("array", ideasArray);
-  console.log("index", index);
-  // ideasArray.splice(index, 1);
-  console.log(ideasArray);
+  console.log("index", targetIndex)
+  ideasArray[targetIndex].deleteFromStorage(identity);
 }
