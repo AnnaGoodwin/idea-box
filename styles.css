@@ -39,6 +39,13 @@ h1 {
 .main__section--top {
   background-color: #A9AAD2;
   height: 40vh;
+  display: flex;
+  justify-content: center;
+}
+
+.section__form{
+  display: flex;
+  flex-direction: column;
 }
 
 .div__button--starred,
