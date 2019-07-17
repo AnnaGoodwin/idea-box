@@ -6,7 +6,10 @@ var form = document.querySelector('.section__form');
 var mainSectionBottom = document.querySelector('.main__section--bottom');
 var textBody = document.querySelector('.form__textarea--body');
 var ideasArray = [];
+var newIdea = new Idea(titleInput.value, bodyInput.value);
+ideasArray.push(newIdea);
 // var ideaCard = document.querySelector('.section__article');
+
 
 //**** On Page Load ******
 disableSaveButton();
@@ -62,8 +65,6 @@ function displayIdeaCard(title, body) {
 }
 
 function instaniateIdea(title, body) {
-  var newIdea = new Idea(title, body);
-  ideasArray.push(newIdea);
   console.log(newIdea)
   newIdea.saveToStorage(ideasArray);
   displayIdeaCard(title, body)
