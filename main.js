@@ -70,14 +70,18 @@ function instaniateIdea(title, body) {
 }
 
 function getFromStorage() {
+  console.log(ideasArray)
   ideasArray = JSON.parse(localStorage.getItem("ideaArray"));
-  console.log(ideasArray);
+  if(ideasArray === null) {
+    ideasArray = [];
+  }
+  console.log("hi",ideasArray);
 }
 
 function persistCards() {
   ideasArray.forEach(function(element) {
     displayIdeaCard(element.title, element.body);
-  })
+  });
 }
 
 function deleteIdeaCard() {
