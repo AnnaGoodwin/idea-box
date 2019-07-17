@@ -5,15 +5,10 @@ var bodyInput = document.querySelector('.form__textarea--body');
 var form = document.querySelector('.section__form');
 var mainSectionBottom = document.querySelector('.main__section--bottom');
 var textBody = document.querySelector('.form__textarea--body');
-var ideasArray = [];
-var newIdea = new Idea(titleInput.value, bodyInput.value);
-ideasArray.push(newIdea);
-// var ideaCard = document.querySelector('.section__article');
-
+var ideasArray = JSON.parse(localStorage.getItem("ideaArray")) || [];
 
 //**** On Page Load ******
 disableSaveButton();
-getFromStorage();
 persistCards();
 
 // Event Listeners
@@ -37,20 +32,20 @@ function emptyInputs() {
 }
 
 function handleSaveButton() {
-  instaniateIdea(titleInput.value, textBody.value);
+  instaniateIdea();
   emptyInputs();
 }
 
-function displayIdeaCard(title, body) {
+function displayIdeaCard(newIdeaObj) {
   mainSectionBottom.insertAdjacentHTML('afterbegin',
-    `<article class="section__article">
+    `<article class="section__article" data-identifier="${newIdeaObj.id}">
       <header class="article__header">
         <img class="header__img--star" src="images/star.svg" alt="star">
         <img class="header__img--x" src="images/delete.svg" alt="x">
       </header>
       <div class="article__div">
-        <h3 class="div__h3--title">${title}</h3>
-        <p class="div__p--text">${body}</p>
+        <h3 class="div__h3--title">${newIdeaObj.title}</h3>
+        <p class="div__p--text">${newIdeaObj.body}</p>
       </div>
       <footer class="article__footer">
         <button class="footer__button--upvote" type="button">
@@ -64,24 +59,17 @@ function displayIdeaCard(title, body) {
     </article>`)
 }
 
-function instaniateIdea(title, body) {
-  console.log(newIdea)
+function instaniateIdea() {
+  var newIdea = new Idea(titleInput.value, bodyInput.value);
+  ideasArray.push(newIdea);
+  console.log(newIdea);
   newIdea.saveToStorage(ideasArray);
-  displayIdeaCard(title, body)
-}
-
-function getFromStorage() {
-  console.log(ideasArray)
-  ideasArray = JSON.parse(localStorage.getItem("ideaArray"));
-  if(ideasArray === null) {
-    ideasArray = [];
-  }
-  console.log("hi",ideasArray);
+  displayIdeaCard(newIdea);
 }
 
 function persistCards() {
   ideasArray.forEach(function(element) {
-    displayIdeaCard(element.title, element.body);
+    displayIdeaCard(element);
   });
 }
 
