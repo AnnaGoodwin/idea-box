@@ -5,7 +5,6 @@ var bodyInput = document.querySelector('.form__textarea--body');
 var form = document.querySelector('.section__form');
 var mainSectionBottom = document.querySelector('.main__section--bottom');
 var textBody = document.querySelector('.form__textarea--body');
-// var ideasArray = JSON.parse(localStorage.getItem("ideaArray")) || [];
 var ideasArray = JSON.parse(localStorage.getItem("ideaArray")).map(element => {
   return new Idea(element)
 }) || []; //check indentation??
@@ -17,8 +16,7 @@ persistCards();
 // Event Listeners
 form.addEventListener('keyup', disableSaveButton);
 saveButton.addEventListener('click', handleSaveButton);
-mainSectionBottom.addEventListener('click', deleteIdeaCard);
-mainSectionBottom.addEventListener('click', toggleStar);
+mainSectionBottom.addEventListener('click', handleCardInteractions);
 
 
 // Functions
@@ -39,6 +37,11 @@ function emptyInputs() {
 function handleSaveButton() {
   instaniateIdea();
   emptyInputs();
+}
+
+function handleCardInteractions() {
+  deleteIdeaCard(event);
+  toggleStar(event);
 }
 
 function displayIdeaCard(newIdeaObj) {
