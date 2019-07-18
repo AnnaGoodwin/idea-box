@@ -22,6 +22,7 @@ window.addEventListener('load',function() {
   disableSaveButton();
   mapArray();
   persistCards();
+  ideasMessage();
 })
 
 form.addEventListener('keyup', disableSaveButton);
@@ -49,6 +50,7 @@ function emptyInputs() {
 function handleSaveButton() {
   instaniateIdea();
   emptyInputs();
+  ideasMessage();
 }
 
 function handleCardInteractions() {
@@ -97,6 +99,7 @@ function deleteIdeaCard(event) {
   if(event.target.classList.contains('header__img--x')) {
     event.target.parentNode.parentNode.remove();
     removeFromStorage(event);
+    ideasMessage();
   }
 }
 
@@ -144,6 +147,18 @@ function updateBody(event) {
     var targetObject = findObject(event);
     targetObject.body = newBody;
     targetObject.saveToStorage(ideasArray);
+  }
+}
+
+//Eduardo TEST
+
+function ideasMessage() {
+  if(ideasArray.length === 0) {
+    mainSectionBottom.insertAdjacentHTML('afterbegin', `<p id='ptag'>Create Ideas</p>`);
+  } else {
+    var ideaMessage = document.querySelector('#ptag')
+    ideaMessage.remove();
+    console.log(ideaMessage);
   }
 }
 
