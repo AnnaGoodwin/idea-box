@@ -11,9 +11,9 @@ class Idea {
     localStorage.setItem("ideaArray", JSON.stringify(array));
   }
 
-  deleteFromStorage(index) {
-    ideasArray.splice(index, 1)
-    this.saveToStorage(ideasArray)
+  deleteFromStorage(index, array) {
+    array.splice(index, 1)
+    this.saveToStorage(array)
   }
 
   updateIdea() {

@@ -4,16 +4,25 @@ var titleInput = document.querySelector('.form__input--title');
 var bodyInput = document.querySelector('.form__textarea--body');
 var form = document.querySelector('.section__form');
 var mainSectionBottom = document.querySelector('.main__section--bottom');
-var textBody = document.querySelector('.form__textarea--body');
-var ideasArray = JSON.parse(localStorage.getItem("ideaArray")).map(element => {
-  return new Idea(element)
-}) || []; //check indentation??
+var ideasArray = [];
+
+function mapArray(){
+  if (JSON.parse(localStorage.getItem("ideaArray")) === null)
+  {ideasArray = [];
+  } else {
+    ideasArray = JSON.parse(localStorage.getItem("ideaArray")).map(element => {
+    return new Idea(element)
+    })
+  };
+} 
 
 //**** On Page Load ******
-disableSaveButton();
-persistCards();
-
 // Event Listeners
+window.addEventListener('load',function() {
+  disableSaveButton();
+  mapArray();
+  persistCards();
+})
 form.addEventListener('keyup', disableSaveButton);
 saveButton.addEventListener('click', handleSaveButton);
 mainSectionBottom.addEventListener('click', handleCardInteractions);
@@ -69,7 +78,7 @@ function displayIdeaCard(newIdeaObj) {
 }
 
 function instaniateIdea() {
-  var newIdea = new Idea({title:titleInput.value, body:bodyInput.value}); //check indentation??
+  var newIdea = new Idea({title:titleInput.value, body:bodyInput.value});
   ideasArray.push(newIdea);
   newIdea.saveToStorage(ideasArray);
   displayIdeaCard(newIdea);
@@ -89,15 +98,15 @@ function deleteIdeaCard(event) {
 }
 
 function removeFromStorage(event) {
-  targetIndex = findTargetIndex(event);
-  ideasArray[targetIndex].deleteFromStorage(targetIndex);
+  var targetIndex = findTargetIndex(event);
+  ideasArray[targetIndex].deleteFromStorage(targetIndex, ideasArray);
 }
 
 function toggleStar(event) {
   if(event.target.classList.contains('header__img--star')) {
     var targetObject = findObject();
     targetObject.updateStar();
-    sourcePath = targetObject.star ? 'images/star-active.svg' : 'images/star.svg';
+    var sourcePath = targetObject.star ? 'images/star-active.svg' : 'images/star.svg';
     event.target.setAttribute('src', sourcePath);
     targetObject.saveToStorage(ideasArray);
   }
