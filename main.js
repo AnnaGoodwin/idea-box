@@ -23,9 +23,12 @@ window.addEventListener('load',function() {
   mapArray();
   persistCards();
 })
+
 form.addEventListener('keyup', disableSaveButton);
 saveButton.addEventListener('click', handleSaveButton);
 mainSectionBottom.addEventListener('click', handleCardInteractions);
+
+mainSectionBottom.addEventListener('keyup', updateTitle);
 
 
 // Functions
@@ -62,8 +65,8 @@ function displayIdeaCard(newIdeaObj) {
         <img class="header__img--x" src="images/delete.svg" alt="x">
       </header>
       <div class="article__div">
-        <h3 class="div__h3--title">${newIdeaObj.title}</h3>
-        <p class="div__p--text">${newIdeaObj.body}</p>
+        <h3 class="div__h3--title" contenteditable="true">${newIdeaObj.title}</h3>
+        <p class="div__p--text" contenteditable="true">${newIdeaObj.body}</p>
       </div>
       <footer class="article__footer">
         <button class="footer__button--upvote" type="button">
@@ -102,6 +105,30 @@ function removeFromStorage(event) {
   ideasArray[targetIndex].deleteFromStorage(targetIndex, ideasArray);
 }
 
+// function toggleStar(event) {
+//   if(event.target.classList.contains('header__img--star')) {
+//     var targetObject = findObject();
+//     targetObject.updateStar();
+//     var sourcePath = targetObject.star ? 'images/star-active.svg' : 'images/star.svg';
+//     event.target.setAttribute('src', sourcePath);
+//     targetObject.saveToStorage(ideasArray);
+//   }
+// }
+
+function findTargetIndex(event) {
+  var identity = event.target.closest('.section__article').dataset.identifier;
+  var targetIndex = ideasArray.findIndex(obj => {
+    return parseInt(identity) === obj.id
+  });
+  return targetIndex;
+}
+
+function findObject(event) {
+  var targetIdea = findTargetIndex(event);
+  var targetObject = ideasArray[targetIdea];
+  return targetObject
+}
+//delete this
 function toggleStar(event) {
   if(event.target.classList.contains('header__img--star')) {
     var targetObject = findObject();
@@ -112,22 +139,23 @@ function toggleStar(event) {
   }
 }
 
-function findTargetIndex(event) {
-  var identity = event.target.closest('.section__article').dataset.identifier;
-  var targetIndex = ideasArray.findIndex(obj => {
-    return parseInt(identity) === obj.id
-  });
-  return targetIndex;
+function updateTitle(event) {
+  if(event.target.classList.contains('div__h3--title')) {
+    var newTitle = event.target.closest('.div__h3--title').innerText
+    var targetObject = findObject(event);
+    targetObject.title = newTitle
+    targetObject.saveToStorage(ideasArray);
+    console.log(targetObject)
+  }
 }
 
-function findObject() {
-    var targetIdea = findTargetIndex(event);
-    var targetObject = ideasArray[targetIdea];
-    return targetObject
-}
+// function updateBody(event) {
+//   var newTitle = event.target.closest('')
+// }
 
-
-
+//'blur' or 'focusOut' for edit HTML
+//Look at rubric, functionality isn't not the only thing there
+//
 
 
 
