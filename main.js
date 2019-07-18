@@ -173,13 +173,13 @@ function listenForEnter(event) {
 }
 
 function toggleUpvote(event) {
-  console.log('in');
-  // console.log(event);
   if(event.target.classList.contains('button__img--upvote')) {
     var targetObj = findObject(event);
-    console.log("first obj", targetObj.quality)
-    targetObj.updateQuality();
-    console.log("second obj", targetObj.quality);
+    targetObj.updateQuality(qualityArray, ideasArray);
+    console.log(ideasArray);
+    var newQuality = event.target.closest('.section__article').querySelector('.quality');
+    console.log(newQuality)
+    newQuality.innerText = qualityArray[targetObj.quality];
   }
 }
 
