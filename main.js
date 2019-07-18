@@ -95,12 +95,10 @@ function removeFromStorage(event) {
 
 function toggleStar(event) {
   if(event.target.classList.contains('header__img--star')) {
-    var targetIdea = findIdea(event);
-    var targetObject = ideasArray[targetIdea];
+    var targetObject = findObject();
     targetObject.updateStar();
     sourcePath = targetObject.star ? 'images/star-active.svg' : 'images/star.svg';
     event.target.setAttribute('src', sourcePath);
-    console.log()
     targetObject.saveToStorage(ideasArray);
   }
 }
@@ -110,9 +108,13 @@ function findIdea(event) {
   var targetIndex = ideasArray.findIndex(obj => {
     return parseInt(identity) === obj.id
   });
-  console.log(targetIndex);
   return targetIndex;
-  // ideasArray[targetIndex].updateStar()
+}
+
+function findObject() {
+    var targetIdea = findIdea(event);
+    var targetObject = ideasArray[targetIdea];
+    return targetObject
 }
 
 
