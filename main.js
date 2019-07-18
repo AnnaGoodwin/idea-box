@@ -25,6 +25,7 @@ saveButton.addEventListener('click', handleSaveButton);
 mainSectionBottom.addEventListener('click', handleCardInteractions);
 mainSectionBottom.addEventListener('keyup', updateTitle);
 mainSectionBottom.addEventListener('keyup', updateBody);
+mainSectionBottom.addEventListener('keydown', listenForEnter);
 
 
 // Functions
