@@ -86,11 +86,8 @@ function deleteIdeaCard(event) {
 }
 
 function removeFromStorage(event) {
-  var identity = event.target.closest('.section__article').dataset.identifier;
-  var targetIndex = ideasArray.findIndex(obj => {
-    return parseInt(identity) === obj.id
-  });
-  ideasArray[targetIndex].deleteFromStorage(identity);
+  targetIndex = findTargetIndex(event);
+  ideasArray[targetIndex].deleteFromStorage(targetIndex);
 }
 
 function toggleStar(event) {
@@ -103,7 +100,7 @@ function toggleStar(event) {
   }
 }
 
-function findIdea(event) {
+function findTargetIndex(event) {
   var identity = event.target.closest('.section__article').dataset.identifier;
   var targetIndex = ideasArray.findIndex(obj => {
     return parseInt(identity) === obj.id
@@ -112,7 +109,7 @@ function findIdea(event) {
 }
 
 function findObject() {
-    var targetIdea = findIdea(event);
+    var targetIdea = findTargetIndex(event);
     var targetObject = ideasArray[targetIdea];
     return targetObject
 }

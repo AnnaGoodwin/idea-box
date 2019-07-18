@@ -11,11 +11,9 @@ class Idea {
     localStorage.setItem("ideaArray", JSON.stringify(array));
   }
 
-  deleteFromStorage(identity) {
-    console.log("id", identity)
-    ideasArray = ideasArray.filter(idea => { return parseInt(identity) !== idea.id})
+  deleteFromStorage(index) {
+    ideasArray.splice(index, 1)
     this.saveToStorage(ideasArray)
-    console.log(ideasArray)
   }
 
   updateIdea() {
