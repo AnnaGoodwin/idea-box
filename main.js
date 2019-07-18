@@ -53,6 +53,7 @@ function handleSaveButton() {
 function handleCardInteractions() {
   deleteIdeaCard(event);
   toggleStar(event);
+  toggleUpvote(event);
 }
 
 function handlePageLoad(){
@@ -168,6 +169,17 @@ function listenForEnter(event) {
     event.target.blur();
     updateBody();
     updatedTitle();
+  }
+}
+
+function toggleUpvote(event) {
+  console.log('in');
+  // console.log(event);
+  if(event.target.classList.contains('button__img--upvote')) {
+    var targetObj = findObject(event);
+    console.log("first obj", targetObj.quality)
+    targetObj.updateQuality();
+    console.log("second obj", targetObj.quality);
   }
 }
 
