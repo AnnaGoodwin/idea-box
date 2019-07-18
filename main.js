@@ -18,6 +18,8 @@ persistCards();
 form.addEventListener('keyup', disableSaveButton);
 saveButton.addEventListener('click', handleSaveButton);
 mainSectionBottom.addEventListener('click', deleteIdeaCard);
+mainSectionBottom.addEventListener('click', toggleStar);
+
 
 // Functions
 function disableSaveButton(){
@@ -40,10 +42,11 @@ function handleSaveButton() {
 }
 
 function displayIdeaCard(newIdeaObj) {
+  var starSource = newIdeaObj.star ? 'images/star-active.svg' : 'images/star.svg'
   mainSectionBottom.insertAdjacentHTML('afterbegin',
     `<article class="section__article" data-identifier="${newIdeaObj.id}">
       <header class="article__header">
-        <img class="header__img--star" src="images/star.svg" alt="star">
+        <img class="header__img--star" src="${starSource}" alt="star">
         <img class="header__img--x" src="images/delete.svg" alt="x">
       </header>
       <div class="article__div">
@@ -89,3 +92,32 @@ function removeFromStorage(event) {
   });
   ideasArray[targetIndex].deleteFromStorage(identity);
 }
+
+function toggleStar(event) {
+  if(event.target.classList.contains('header__img--star')) {
+    var targetIdea = findIdea(event);
+    var targetObject = ideasArray[targetIdea];
+    targetObject.updateStar();
+    sourcePath = targetObject.star ? 'images/star-active.svg' : 'images/star.svg';
+    event.target.setAttribute('src', sourcePath);
+    console.log()
+    targetObject.saveToStorage(ideasArray);
+  }
+}
+
+function findIdea(event) {
+  var identity = event.target.closest('.section__article').dataset.identifier;
+  var targetIndex = ideasArray.findIndex(obj => {
+    return parseInt(identity) === obj.id
+  });
+  console.log(targetIndex);
+  return targetIndex;
+  // ideasArray[targetIndex].updateStar()
+}
+
+
+
+
+
+
+
