@@ -5,6 +5,7 @@ var bodyInput = document.querySelector('.form__textarea--body');
 var form = document.querySelector('.section__form');
 var mainSectionBottom = document.querySelector('.main__section--bottom');
 var ideasArray = [];
+var qualityArray = ['Swill', 'Plausible', 'Genius'];
 
 function mapArray(){
   if (JSON.parse(localStorage.getItem("ideaArray")) === null)
@@ -77,7 +78,7 @@ function displayIdeaCard(newIdeaObj) {
         <button class="footer__button--upvote" type="button">
           <img class="button__img--upvote" src="images/upvote.svg" alt="upvote">
         </button>
-        <p class="footer__p--quality">Quality:<span>Swill</span></p>
+        <p class="footer__p--quality">Quality: <span class="quality">${qualityArray[newIdeaObj.quality]}</span></p>
         <button class="footer__button--downvote" type="button">
           <img class="button__img--downvote" src="images/downvote.svg" alt="downvote">
         </button>
