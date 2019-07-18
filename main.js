@@ -18,12 +18,7 @@ function mapArray(){
 
 //**** On Page Load ******
 // Event Listeners
-window.addEventListener('load',function() {
-  disableSaveButton();
-  mapArray();
-  persistCards();
-  ideasMessage();
-})
+window.addEventListener('load', handlePageLoad)
 
 form.addEventListener('keyup', disableSaveButton);
 saveButton.addEventListener('click', handleSaveButton);
@@ -56,6 +51,13 @@ function handleSaveButton() {
 function handleCardInteractions() {
   deleteIdeaCard(event);
   toggleStar(event);
+}
+
+function handlePageLoad(){
+  disableSaveButton();
+  mapArray();
+  persistCards();
+  ideasMessage();
 }
 
 function displayIdeaCard(newIdeaObj) {
@@ -158,7 +160,6 @@ function ideasMessage() {
   } else {
     var ideaMessage = document.querySelector('#ptag')
     ideaMessage.remove();
-    console.log(ideaMessage);
   }
 }
 

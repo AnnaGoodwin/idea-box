@@ -16,7 +16,8 @@ class Idea {
     this.saveToStorage(array)
   }
 
-  updateIdea() {
+  updateIdea(newTitle, array) {
+    //Use saveToStorage
 
   }
 
