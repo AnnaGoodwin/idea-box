@@ -27,8 +27,8 @@ window.addEventListener('load',function() {
 form.addEventListener('keyup', disableSaveButton);
 saveButton.addEventListener('click', handleSaveButton);
 mainSectionBottom.addEventListener('click', handleCardInteractions);
-
 mainSectionBottom.addEventListener('keyup', updateTitle);
+mainSectionBottom.addEventListener('keyup', updateBody);
 
 
 // Functions
@@ -105,15 +105,15 @@ function removeFromStorage(event) {
   ideasArray[targetIndex].deleteFromStorage(targetIndex, ideasArray);
 }
 
-// function toggleStar(event) {
-//   if(event.target.classList.contains('header__img--star')) {
-//     var targetObject = findObject();
-//     targetObject.updateStar();
-//     var sourcePath = targetObject.star ? 'images/star-active.svg' : 'images/star.svg';
-//     event.target.setAttribute('src', sourcePath);
-//     targetObject.saveToStorage(ideasArray);
-//   }
-// }
+function toggleStar(event) {
+  if(event.target.classList.contains('header__img--star')) {
+    var targetObject = findObject();
+    targetObject.updateStar();
+    var sourcePath = targetObject.star ? 'images/star-active.svg' : 'images/star.svg';
+    event.target.setAttribute('src', sourcePath);
+    targetObject.saveToStorage(ideasArray);
+  }
+}
 
 function findTargetIndex(event) {
   var identity = event.target.closest('.section__article').dataset.identifier;
@@ -128,30 +128,24 @@ function findObject(event) {
   var targetObject = ideasArray[targetIdea];
   return targetObject
 }
-//delete this
-function toggleStar(event) {
-  if(event.target.classList.contains('header__img--star')) {
-    var targetObject = findObject();
-    targetObject.updateStar();
-    var sourcePath = targetObject.star ? 'images/star-active.svg' : 'images/star.svg';
-    event.target.setAttribute('src', sourcePath);
-    targetObject.saveToStorage(ideasArray);
-  }
-}
 
 function updateTitle(event) {
   if(event.target.classList.contains('div__h3--title')) {
-    var newTitle = event.target.closest('.div__h3--title').innerText
+    var newTitle = event.target.closest('.div__h3--title').innerText;
     var targetObject = findObject(event);
-    targetObject.title = newTitle
+    targetObject.title = newTitle;
     targetObject.saveToStorage(ideasArray);
-    console.log(targetObject)
   }
 }
 
-// function updateBody(event) {
-//   var newTitle = event.target.closest('')
-// }
+function updateBody(event) {
+  if(event.target.classList.contains('div__p--text')) {
+    var newBody = event.target.closest('.div__p--text').innerText;
+    var targetObject = findObject(event);
+    targetObject.body = newBody;
+    targetObject.saveToStorage(ideasArray);
+  }
+}
 
 //'blur' or 'focusOut' for edit HTML
 //Look at rubric, functionality isn't not the only thing there
