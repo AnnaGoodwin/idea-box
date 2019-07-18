@@ -152,14 +152,20 @@ function updateBody(event) {
   }
 }
 
-//Eduardo TEST
-
 function ideasMessage() {
   if(ideasArray.length === 0) {
     mainSectionBottom.insertAdjacentHTML('afterbegin', `<p id='ptag'>Create Ideas</p>`);
   } else {
     var ideaMessage = document.querySelector('#ptag')
     ideaMessage.remove();
+  }
+}
+
+function listenForEnter(event) {
+  if (event.key === 'Enter') {
+    event.target.blur();
+    updateBody();
+    updatedTitle();
   }
 }
 
