@@ -21,8 +21,12 @@ class Idea {
 
   }
 
-  updateQuality() {
+  updateQuality(array) {
+    if(this.quality > array.length -1 || this.quality < 0) {
+      return
+    } else {
     this.quality++
+    }
   }
 
   updateStar() {
