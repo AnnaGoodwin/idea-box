@@ -23,9 +23,12 @@ window.addEventListener('load',function() {
   mapArray();
   persistCards();
 })
+
 form.addEventListener('keyup', disableSaveButton);
 saveButton.addEventListener('click', handleSaveButton);
 mainSectionBottom.addEventListener('click', handleCardInteractions);
+mainSectionBottom.addEventListener('keyup', updateTitle);
+mainSectionBottom.addEventListener('keyup', updateBody);
 
 
 // Functions
@@ -62,8 +65,8 @@ function displayIdeaCard(newIdeaObj) {
         <img class="header__img--x" src="images/delete.svg" alt="x">
       </header>
       <div class="article__div">
-        <h3 class="div__h3--title">${newIdeaObj.title}</h3>
-        <p class="div__p--text">${newIdeaObj.body}</p>
+        <h3 class="div__h3--title" contenteditable="true">${newIdeaObj.title}</h3>
+        <p class="div__p--text" contenteditable="true">${newIdeaObj.body}</p>
       </div>
       <footer class="article__footer">
         <button class="footer__button--upvote" type="button">
@@ -120,14 +123,33 @@ function findTargetIndex(event) {
   return targetIndex;
 }
 
-function findObject() {
-    var targetIdea = findTargetIndex(event);
-    var targetObject = ideasArray[targetIdea];
-    return targetObject
+function findObject(event) {
+  var targetIdea = findTargetIndex(event);
+  var targetObject = ideasArray[targetIdea];
+  return targetObject
 }
 
+function updateTitle(event) {
+  if(event.target.classList.contains('div__h3--title')) {
+    var newTitle = event.target.closest('.div__h3--title').innerText;
+    var targetObject = findObject(event);
+    targetObject.title = newTitle;
+    targetObject.saveToStorage(ideasArray);
+  }
+}
 
+function updateBody(event) {
+  if(event.target.classList.contains('div__p--text')) {
+    var newBody = event.target.closest('.div__p--text').innerText;
+    var targetObject = findObject(event);
+    targetObject.body = newBody;
+    targetObject.saveToStorage(ideasArray);
+  }
+}
 
+//'blur' or 'focusOut' for edit HTML
+//Look at rubric, functionality isn't not the only thing there
+//
 
 
 
