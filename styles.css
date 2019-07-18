@@ -65,9 +65,55 @@ h1 {
   background-color: #EAEAF4;
   height: 60vh;
 }
+.section__article {
+  display: inline-block;
+  margin: 15px;
+  width: 200px;
+}
+
+.article__header {
+  background-color: #1F1F3D;
+  display: flex;
+  justify-content: space-between;
+  width:100%;
+
+}
+
+.article__div {
+  background-color: #FFFFFF;
+  padding: 10px;
+}
+
+
+.div__h3--title {
+  padding-bottom: 10px;
+}
+
+.div__p--text {
+
+}
+
+.article__footer {
+  background-color: #5356A4;
+  display: flex;
+  justify-content: space-between; 
+}
+
+.footer__p--quality {
+  color: #FFFFFF;
+}
+
+footer img {
+  background-color: #5356A4;
+}
+
+footer button {
+  background-color: #5356A4;
+  border: 0;
+  padding: 0;
+}
 
 article img {
-  border-radius: 50%;
   height: 2em;
   width: 2em;
 }
