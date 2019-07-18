@@ -22,7 +22,7 @@ class Idea {
   }
 
   updateQuality() {
-
+    this.quality++
   }
 
   updateStar() {
