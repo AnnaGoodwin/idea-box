@@ -26,4 +26,8 @@ class Idea {
 
   }
 
+  updateStar() {
+    this.star = !this.star;
+  }
+
 }
