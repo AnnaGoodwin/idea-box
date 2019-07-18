@@ -13,7 +13,7 @@ class Idea {
 
   deleteFromStorage(index, array) {
     array.splice(index, 1)
-    this.saveToStorage(array)
+    this.saveToStorage(array);
   }
 
   updateIdea(newTitle, array) {
@@ -21,8 +21,13 @@ class Idea {
 
   }
 
-  updateQuality() {
-
+  updateQuality(array1, array2) {
+    if(this.quality >= array1.length -1 || this.quality < 0) {
+      return
+    } else {
+    this.quality++
+    }
+    this.saveToStorage(array2);
   }
 
   updateStar() {

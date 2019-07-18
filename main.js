@@ -53,6 +53,7 @@ function handleSaveButton() {
 function handleCardInteractions() {
   deleteIdeaCard(event);
   toggleStar(event);
+  toggleUpvote(event);
 }
 
 function handlePageLoad(){
@@ -168,6 +169,17 @@ function listenForEnter(event) {
     event.target.blur();
     updateBody();
     updatedTitle();
+  }
+}
+
+function toggleUpvote(event) {
+  if(event.target.classList.contains('button__img--upvote')) {
+    var targetObj = findObject(event);
+    targetObj.updateQuality(qualityArray, ideasArray);
+    console.log(ideasArray);
+    var newQuality = event.target.closest('.section__article').querySelector('.quality');
+    console.log(newQuality)
+    newQuality.innerText = qualityArray[targetObj.quality];
   }
 }
 
