@@ -53,8 +53,7 @@ function handleSaveButton() {
 function handleCardInteractions() {
   deleteIdeaCard(event);
   toggleStar(event);
-  toggleVote(event, 'upvote', 'button__img--upvote');
-  toggleVote(event, 'downvote', 'button__img--downvote');
+  toggleVote(event);
 }
 
 function handlePageLoad(){
@@ -176,12 +175,20 @@ function listenForEnter(event) {
     updatedTitle();
   }
 }
-function toggleVote(event, vote, location) {
-  if (event.target.classList.contains(location)) {
-    var targetObj = findObject(event);
-    targetObj.updateQuality(qualityArray, ideasArray, vote);
-    var newQuality = event.target.closest('.section__article').querySelector('.quality');
-    newQuality.innerText = qualityArray[targetObj.quality];
+
+var upvoteClass = 'button__img--upvote'
+var downvoteClass = 'button__img--downvote'
+
+function toggleVote(event) {
+  var targetObj = findObject(event);
+  if (event.target.classList.contains(upvoteClass)) {
+    targetObj.changeQualityScore(event, upvoteClass);
+    targetObj.setQualityText(event);
+  }
+
+  if (event.target.classList.contains(downvoteClass)) {
+    targetObj.changeQualityScore(event, downvoteClass);
+    targetObj.setQualityText(event);
   }
 }
 
