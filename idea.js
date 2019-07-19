@@ -21,13 +21,24 @@ class Idea {
 
   }
 
-  updateQuality(array1, array2, vote) {
-    if (vote === 'upvote' && this.quality != array1.length -1) {
-    this.quality++;
-    } else if (vote === 'downvote' && this.quality !== 0) {
+  changeQualityScore(event, voteClass) {
+    this.updateQuality(qualityArray, ideasArray, voteClass);
+  }
+
+  setQualityText(event) {
+    var newQuality = event.target.closest('.section__article').querySelector('.quality');
+    newQuality.innerText = qualityArray[this.quality];
+  }
+  
+  updateQuality(qualityArray, ideaArray, buttonClass) {
+    if(buttonClass === 'button__img--upvote' && !(this.quality >= qualityArray.length -1 || this.quality < 0)){
+      this.quality++;
+    } else if(buttonClass === 'button__img--downvote' && (this.quality > 0)) {
       this.quality--;
+    } else {
+      return
     }
-    this.saveToStorage(array2);
+    this.saveToStorage(ideaArray);
   }
 
   updateStar() {
