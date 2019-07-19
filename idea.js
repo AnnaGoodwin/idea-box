@@ -21,11 +21,11 @@ class Idea {
 
   }
 
-  updateQuality(array1, array2) {
-    if(this.quality >= array1.length -1 || this.quality < 0) {
-      return
-    } else {
-    this.quality++
+  updateQuality(array1, array2, vote) {
+    if (vote === 'upvote' && this.quality != array1.length -1) {
+    this.quality++;
+    } else if (vote === 'downvote' && this.quality !== 0) {
+      this.quality--;
     }
     this.saveToStorage(array2);
   }

@@ -53,7 +53,8 @@ function handleSaveButton() {
 function handleCardInteractions() {
   deleteIdeaCard(event);
   toggleStar(event);
-  toggleUpvote(event);
+  toggleVote(event, 'upvote', 'button__img--upvote');
+  toggleVote(event, 'downvote', 'button__img--downvote');
 }
 
 function handlePageLoad(){
@@ -175,14 +176,11 @@ function listenForEnter(event) {
     updatedTitle();
   }
 }
-
-function toggleUpvote(event) {
-  if(event.target.classList.contains('button__img--upvote')) {
+function toggleVote(event, vote, location) {
+  if (event.target.classList.contains(location)) {
     var targetObj = findObject(event);
-    targetObj.updateQuality(qualityArray, ideasArray);
-    console.log(ideasArray);
+    targetObj.updateQuality(qualityArray, ideasArray, vote);
     var newQuality = event.target.closest('.section__article').querySelector('.quality');
-    console.log(newQuality)
     newQuality.innerText = qualityArray[targetObj.quality];
   }
 }
