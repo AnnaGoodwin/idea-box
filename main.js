@@ -115,7 +115,7 @@ function removeFromStorage(event) {
 
 function toggleStar(event) {
   if(event.target.classList.contains('header__img--star')) {
-    var targetObject = findObject();
+    var targetObject = findObject(event);
     targetObject.updateStar();
     var sourcePath = targetObject.star ? 'images/star-active.svg' : 'images/star.svg';
     event.target.setAttribute('src', sourcePath);
@@ -127,7 +127,11 @@ function findTargetIndex(event) {
   var identity = event.target.closest('.section__article').dataset.identifier;
   var targetIndex = ideasArray.findIndex(obj => {
     return parseInt(identity) === obj.id
-  });
+  });function cardButtonHover(e, location, activeButton) {
+  if (e.target.classList.contains(location)) {
+    e.target.setAttribute('src', `idea-box-icons/${activeButton}`);
+  }
+}
   return targetIndex;
 }
 
