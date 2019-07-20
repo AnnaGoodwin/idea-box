@@ -76,13 +76,9 @@ function displayIdeaCard(newIdeaObj) {
         <p class="div__p--text" contenteditable="true">${newIdeaObj.body}</p>
       </div>
       <footer class="article__footer">
-        <button class="footer__button--upvote" type="button">
-          <img class="button__img--upvote" src="images/upvote.svg" alt="upvote">
-        </button>
+        <img class="button__img--upvote" src="images/upvote.svg" alt="upvote">
         <p class="footer__p--quality">Quality: <span class="quality">${qualityArray[newIdeaObj.quality]}</span></p>
-        <button class="footer__button--downvote" type="button">
-          <img class="button__img--downvote" src="images/downvote.svg" alt="downvote">
-        </button>
+        <img class="button__img--downvote" src="images/downvote.svg" alt="downvote">
       </footer>
     </article>`)
 }
