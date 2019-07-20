@@ -194,14 +194,11 @@ function searchIdea() {
     clearCards();
     var searchArray = [];
   for(var i = 0; i < ideasArray.length; i++) {
-    if(ideasArray[i].title.toLowerCase().includes(searchInput.value.toLowerCase())) {
-      console.log(ideasArray[i])
+    if(ideasArray[i].title.toLowerCase().includes(searchInput.value.toLowerCase()) || ideasArray[i].body.toLowerCase().includes(searchInput.value.toLowerCase())) {
       searchArray.push(ideasArray[i]);
-    console.log('inside condtional');
     }
   }
-    console.log(searchArray);
-    persistCards(searchArray);
+  persistCards(searchArray);
 }
 
 function clearCards() {
