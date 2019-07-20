@@ -33,6 +33,7 @@ searchInput.addEventListener('keyup', searchIdea);
 starButton.addEventListener('click', filterByStar)
 
 
+
 // Functions
 function disableSaveButton(){
   if (titleInput.value === '' || bodyInput.value === '') {
@@ -231,13 +232,26 @@ function clearStars() {
   clearCards(); 
   persistCards(ideasArray);
   starButton.innerText = 'Show Starred Ideas';
-
 }
 
-//'blur' or 'focusOut' for edit HTML
-//Look at rubric, functionality isn't not the only thing there
-//
+function filterByQuality(index, qArray) {
+  clearCards();
+  for(var i = 0; i < ideasArray.length; i++) {
+    if(ideasArray[i].quality === index) {
+      qArray.push(ideasArray[i]);
+    }
+  }
+  persistCards(qArray);
+}
 
+function getQuality(event) {
+  if(event.target.classList.contains('nav__btn--swill')) {
+    filterByQuality(0, sArray = []);
+  } else if (event.target.classList.contains('nav__btn--plausible')) {
+    filterByQuality(1, pArray = []);
+  } else if (event.target.classList.contains('nav__btn--genius')) {
+    filterByQuality(2, gArray = []);
+  } 
+}
 
-
-
+document.querySelector('.body__nav').addEventListener('click', getQuality);
