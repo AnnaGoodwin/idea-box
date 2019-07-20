@@ -4,6 +4,7 @@ var titleInput = document.querySelector('.form__input--title');
 var bodyInput = document.querySelector('.form__textarea--body');
 var form = document.querySelector('.section__form');
 var mainSectionBottom = document.querySelector('.main__section--bottom');
+var searchInput = document.querySelector('.form__input--search');
 var ideasArray = [];
 var qualityArray = ['Swill', 'Plausible', 'Genius'];
 
@@ -27,6 +28,7 @@ mainSectionBottom.addEventListener('click', handleCardInteractions);
 mainSectionBottom.addEventListener('keyup', updateTitle);
 mainSectionBottom.addEventListener('keyup', updateBody);
 mainSectionBottom.addEventListener('keydown', listenForEnter);
+searchInput.addEventListener('keyup', searchIdea);
 
 
 // Functions
@@ -59,7 +61,7 @@ function handleCardInteractions() {
 function handlePageLoad(){
   disableSaveButton();
   mapArray();
-  persistCards();
+  persistCards(ideasArray);
   ideasMessage();
 }
 
@@ -90,8 +92,8 @@ function instaniateIdea() {
   displayIdeaCard(newIdea);
 }
 
-function persistCards() {
-  ideasArray.forEach(function(element) {
+function persistCards(array) {
+  array.forEach(function(element) {
     displayIdeaCard(element);
   });
 }
@@ -189,7 +191,21 @@ function toggleVote(event) {
 }
 
 function searchIdea() {
-  var searchInput = document.querySelector('.form__input--search');
+    clearCards();
+    var searchArray = [];
+  for(var i = 0; i < ideasArray.length; i++) {
+    if(ideasArray[i].title.toLowerCase().includes(searchInput.value.toLowerCase())) {
+      console.log(ideasArray[i])
+      searchArray.push(ideasArray[i]);
+    console.log('inside condtional');
+    }
+  }
+    console.log(searchArray);
+    persistCards(searchArray);
+}
+
+function clearCards() {
+  mainSectionBottom.innerHTML = '';
 }
 
 //'blur' or 'focusOut' for edit HTML
