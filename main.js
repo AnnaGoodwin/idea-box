@@ -192,6 +192,10 @@ function toggleVote(event) {
   }
 }
 
+function searchIdea() {
+  var searchInput = document.querySelector('.form__input--search');
+}
+
 //'blur' or 'focusOut' for edit HTML
 //Look at rubric, functionality isn't not the only thing there
 //
