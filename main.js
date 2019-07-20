@@ -5,6 +5,7 @@ var bodyInput = document.querySelector('.form__textarea--body');
 var form = document.querySelector('.section__form');
 var mainSectionBottom = document.querySelector('.main__section--bottom');
 var searchInput = document.querySelector('.form__input--search');
+var starButton = document.querySelector('.div__button--starred')
 var ideasArray = [];
 var qualityArray = ['Swill', 'Plausible', 'Genius'];
 
@@ -29,6 +30,7 @@ mainSectionBottom.addEventListener('keyup', updateTitle);
 mainSectionBottom.addEventListener('keyup', updateBody);
 mainSectionBottom.addEventListener('keydown', listenForEnter);
 searchInput.addEventListener('keyup', searchIdea);
+starButton.addEventListener('click', filterByStar)
 
 
 // Functions
@@ -203,6 +205,33 @@ function searchIdea() {
 
 function clearCards() {
   mainSectionBottom.innerHTML = '';
+}
+var toggle = false;
+
+function filterByStar() {
+  console.log('before', toggle);
+  toggle = !toggle;
+  console.log('after', toggle)
+  toggle ? searchStar() : clearStars();
+}
+
+function searchStar() {
+  clearCards();
+  var starArray = [];
+  for (var i = 0; i < ideasArray.length; i++) {
+    if (ideasArray[i].star === true) {
+    starArray.push(ideasArray[i]);
+    }
+  }
+  persistCards(starArray);
+  starButton.innerText = 'View All Ideas'
+}
+
+function clearStars() {
+  clearCards(); 
+  persistCards(ideasArray);
+  starButton.innerText = 'Show Starred Ideas';
+
 }
 
 //'blur' or 'focusOut' for edit HTML
