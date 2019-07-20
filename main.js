@@ -8,6 +8,7 @@ var searchInput = document.querySelector('.form__input--search');
 var starButton = document.querySelector('.div__button--starred')
 var ideasArray = [];
 var qualityArray = ['Swill', 'Plausible', 'Genius'];
+var toggleArray = [false, false, false, false];
 
 function mapArray(){
   if (JSON.parse(localStorage.getItem("ideaArray")) === null)
@@ -207,13 +208,10 @@ function searchIdea() {
 function clearCards() {
   mainSectionBottom.innerHTML = '';
 }
-var toggle = false;
 
 function filterByStar() {
-  console.log('before', toggle);
-  toggle = !toggle;
-  console.log('after', toggle)
-  toggle ? searchStar() : clearStars();
+  toggleArray[3] = !toggleArray[3];
+  toggleArray[3] ? searchStar() : clearStars();
 }
 
 function searchStar() {
