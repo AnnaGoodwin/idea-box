@@ -4,6 +4,7 @@ var titleInput = document.querySelector('.form__input--title');
 var bodyInput = document.querySelector('.form__textarea--body');
 var form = document.querySelector('.section__form');
 var mainSectionBottom = document.querySelector('.main__section--bottom');
+var searchInput = document.querySelector('.form__input--search');
 var ideasArray = [];
 var qualityArray = ['Swill', 'Plausible', 'Genius'];
 
@@ -27,6 +28,7 @@ mainSectionBottom.addEventListener('click', handleCardInteractions);
 mainSectionBottom.addEventListener('keyup', updateTitle);
 mainSectionBottom.addEventListener('keyup', updateBody);
 mainSectionBottom.addEventListener('keydown', listenForEnter);
+searchInput.addEventListener('keyup', searchIdea);
 
 
 // Functions
@@ -59,7 +61,7 @@ function handleCardInteractions() {
 function handlePageLoad(){
   disableSaveButton();
   mapArray();
-  persistCards();
+  persistCards(ideasArray);
   ideasMessage();
 }
 
@@ -76,13 +78,9 @@ function displayIdeaCard(newIdeaObj) {
         <p class="div__p--text" contenteditable="true">${newIdeaObj.body}</p>
       </div>
       <footer class="article__footer">
-        <button class="footer__button--upvote" type="button">
-          <img class="button__img--upvote" src="images/upvote.svg" alt="upvote">
-        </button>
+        <img class="button__img--upvote" src="images/upvote.svg" alt="upvote">
         <p class="footer__p--quality">Quality: <span class="quality">${qualityArray[newIdeaObj.quality]}</span></p>
-        <button class="footer__button--downvote" type="button">
-          <img class="button__img--downvote" src="images/downvote.svg" alt="downvote">
-        </button>
+        <img class="button__img--downvote" src="images/downvote.svg" alt="downvote">
       </footer>
     </article>`)
 }
@@ -94,8 +92,8 @@ function instaniateIdea() {
   displayIdeaCard(newIdea);
 }
 
-function persistCards() {
-  ideasArray.forEach(function(element) {
+function persistCards(array) {
+  array.forEach(function(element) {
     displayIdeaCard(element);
   });
 }
@@ -190,6 +188,21 @@ function toggleVote(event) {
     targetObj.changeQualityScore(event, downvoteClass);
     targetObj.setQualityText(event);
   }
+}
+
+function searchIdea() {
+    clearCards();
+    var searchArray = [];
+  for(var i = 0; i < ideasArray.length; i++) {
+    if(ideasArray[i].title.toLowerCase().includes(searchInput.value.toLowerCase()) || ideasArray[i].body.toLowerCase().includes(searchInput.value.toLowerCase())) {
+      searchArray.push(ideasArray[i]);
+    }
+  }
+  persistCards(searchArray);
+}
+
+function clearCards() {
+  mainSectionBottom.innerHTML = '';
 }
 
 //'blur' or 'focusOut' for edit HTML
