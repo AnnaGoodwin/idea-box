@@ -15,7 +15,7 @@ function mapArray(){
   {ideasArray = [];
   } else {
     ideasArray = JSON.parse(localStorage.getItem("ideaArray")).map(element => {
-    return new Idea(element)
+      return new Idea(element)
     })
   };
 } 
@@ -32,6 +32,7 @@ mainSectionBottom.addEventListener('keyup', updateBody);
 mainSectionBottom.addEventListener('keydown', listenForEnter);
 searchInput.addEventListener('keyup', searchIdea);
 starButton.addEventListener('click', filterByStar)
+document.querySelector('.body__nav').addEventListener('click', getQuality);
 
 
 
@@ -65,7 +66,7 @@ function handleCardInteractions() {
 function handlePageLoad(){
   disableSaveButton();
   mapArray();
-  persistCards(ideasArray);
+  showTen(ideasArray, tenArray = []);
   ideasMessage();
 }
 
@@ -232,7 +233,6 @@ function clearStars() {
   starButton.innerText = 'Show Starred Ideas';
 }
 
-
 //EDUARDO TEST
 var bodyNav = document.querySelector('.body__nav');
 bodyNav.addEventListener('click', toggleQuality);
@@ -275,4 +275,31 @@ function filterByQuality(index, qArray) {
 function clearQuality() {
   clearCards(); 
   persistCards(ideasArray);
+}
+//End Eduardo Test
+
+document.querySelector('.form__btn--show').addEventListener('click', showButton)
+
+function showTen(array1, array2){
+  if (array1.length > 10 ){
+    for (i = array1.length -1; i >= array1.length - 10; i--){
+      array2.push(array1[i])
+    }
+    array2.reverse();
+    persistCards(array2)
+  } else {
+    persistCards(array1)
+  }
+}
+
+function showButton(){
+  if (document.querySelector('.form__btn--show').innerText === 'Show More'){
+    clearCards();
+    persistCards(ideasArray);
+    document.querySelector('.form__btn--show').innerText = 'Show Less';
+  } else if (document.querySelector('.form__btn--show').innerText === 'Show Less') {
+    clearCards();
+    showTen(ideasArray, tenArray = []);
+    document.querySelector('.form__btn--show').innerText = 'Show More';
+  }
 }
