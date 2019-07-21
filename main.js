@@ -232,6 +232,36 @@ function clearStars() {
   starButton.innerText = 'Show Starred Ideas';
 }
 
+
+//EDUARDO TEST
+var bodyNav = document.querySelector('.body__nav');
+bodyNav.addEventListener('click', toggleQuality);
+
+function toggleQuality(event) {
+  if(event.target.classList.contains('nav__btn--swill')) {
+    toggleArray[0] = !toggleArray[0];
+    toggleArray[0] ? getQuality(event) : clearQuality();
+  } else if (event.target.classList.contains('nav__btn--plausible')) {
+    toggleArray[1] = !toggleArray[1];
+    toggleArray[1] ? getQuality(event) : clearQuality();
+  } else if (event.target.classList.contains('nav__btn--genius')) {
+    toggleArray[2] = !toggleArray[2];
+    toggleArray[2] ? getQuality(event) : clearQuality();
+  }
+}
+
+function getQuality(event) {
+  if(event.target.classList.contains('nav__btn--swill')) {
+    toggleArray[0] = !toggleArray[0];
+    toggleArray[0] ? getQuality(event) : clearQuality();
+    filterByQuality(0, sArray = []);
+  } else if (event.target.classList.contains('nav__btn--plausible')) {
+    filterByQuality(1, pArray = []);
+  } else if (event.target.classList.contains('nav__btn--genius')) {
+    filterByQuality(2, gArray = []);
+  } 
+}
+
 function filterByQuality(index, qArray) {
   clearCards();
   for(var i = 0; i < ideasArray.length; i++) {
@@ -242,14 +272,7 @@ function filterByQuality(index, qArray) {
   persistCards(qArray);
 }
 
-function getQuality(event) {
-  if(event.target.classList.contains('nav__btn--swill')) {
-    filterByQuality(0, sArray = []);
-  } else if (event.target.classList.contains('nav__btn--plausible')) {
-    filterByQuality(1, pArray = []);
-  } else if (event.target.classList.contains('nav__btn--genius')) {
-    filterByQuality(2, gArray = []);
-  } 
+function clearQuality() {
+  clearCards(); 
+  persistCards(ideasArray);
 }
-
-document.querySelector('.body__nav').addEventListener('click', getQuality);
