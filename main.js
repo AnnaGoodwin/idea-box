@@ -66,7 +66,7 @@ function handleCardInteractions() {
 function handlePageLoad(){
   disableSaveButton();
   mapArray();
-  showTen(ideasArray);
+  showTen(ideasArray, tenArray = []);
   ideasMessage();
 }
 
@@ -255,10 +255,12 @@ function getQuality(event) {
 
 document.querySelector('.form__btn--show').addEventListener('click', showButton)
 
-function showTen(array){
-  for (i = array.length -1; i >= array.length - 10; i--){
-    displayIdeaCard(array[i])
+function showTen(array1, array2){
+  for (i = array1.length -1; i >= array1.length - 10; i--){
+    array2.push(array1[i])
   }
+  array2.reverse();
+  persistCards(array2)
 }
 
 function showButton(){
@@ -268,7 +270,7 @@ function showButton(){
     document.querySelector('.form__btn--show').innerText = 'Show Less';
   } else if (document.querySelector('.form__btn--show').innerText === 'Show Less') {
     clearCards();
-    showTen(ideasArray);
+    showTen(ideasArray, tenArray = []);
     document.querySelector('.form__btn--show').innerText = 'Show More';
   }
 }
