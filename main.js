@@ -256,11 +256,15 @@ function getQuality(event) {
 document.querySelector('.form__btn--show').addEventListener('click', showButton)
 
 function showTen(array1, array2){
-  for (i = array1.length -1; i >= array1.length - 10; i--){
-    array2.push(array1[i])
+  if (array1.length > 10 ){
+    for (i = array1.length -1; i >= array1.length - 10; i--){
+      array2.push(array1[i])
+    }
+    array2.reverse();
+    persistCards(array2)
+  } else {
+    persistCards(array1)
   }
-  array2.reverse();
-  persistCards(array2)
 }
 
 function showButton(){
