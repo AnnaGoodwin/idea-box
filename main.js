@@ -233,7 +233,6 @@ function clearStars() {
   starButton.innerText = 'Show Starred Ideas';
 }
 
-//EDUARDO TEST
 var bodyNav = document.querySelector('.body__nav');
 bodyNav.addEventListener('click', toggleQuality);
 
@@ -252,6 +251,8 @@ function toggleQuality(event) {
 
 function getQuality(event) {
   if(event.target.classList.contains('nav__btn--swill')) {
+    toggleArray[0] = !toggleArray[0];
+    toggleArray[0] ? getQuality(event) : clearQuality();
     filterByQuality(0, sArray = []);
   } else if (event.target.classList.contains('nav__btn--plausible')) {
     filterByQuality(1, pArray = []);
@@ -274,7 +275,6 @@ function clearQuality() {
   clearCards(); 
   persistCards(ideasArray);
 }
-// End Eduardo Test
 
 document.querySelector('.form__btn--show').addEventListener('click', showButton)
 
