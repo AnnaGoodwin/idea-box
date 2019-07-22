@@ -239,6 +239,7 @@ function clearStars() {
 var bodyNav = document.querySelector('.body__nav');
 bodyNav.addEventListener('click', getQuality);
 
+<<<<<<< HEAD
 function toggleQuality(event) {
   var childrenArr = event.target.parentNode.children;
   // console.log(element.innerText);
@@ -258,6 +259,21 @@ function toggleQuality(event) {
     index.innerText = qualityArray[2];
   }
 }
+=======
+// function toggleQuality(event) {
+  // if(event.target.textContent === 'Swill') {
+//     console.log(event);
+//     toggleArray[0] = !toggleArray[0];
+//     toggleArray[0] ? getQuality(event) : clearQuality();
+//   } else if (event.target.classList.contains('nav__btn--plausible')) {
+//     toggleArray[1] = !toggleArray[1];
+//     toggleArray[1] ? getQuality(event) : clearQuality();
+//   } else if (event.target.classList.contains('nav__btn--genius')) {
+//     toggleArray[2] = !toggleArray[2];
+//     toggleArray[2] ? getQuality(event) : clearQuality();
+//   }
+// }
+>>>>>>> parent of 3d18011... Change sibling inner text
 
 function changeQualityText(event) {
   event.target.textContent = 'Show All Ideas';
@@ -266,8 +282,11 @@ function changeQualityText(event) {
 function getQuality(event) {
   if(event.target.classList.contains('nav__btn--swill')) {
     filterByQuality(0, sArray = []);
+<<<<<<< HEAD
     changeQualityText(event);
     toggleQuality(event);
+=======
+>>>>>>> parent of 3d18011... Change sibling inner text
   } else if (event.target.classList.contains('nav__btn--plausible')) {
     filterByQuality(1, pArray = []);
     changeQualityText(event);
