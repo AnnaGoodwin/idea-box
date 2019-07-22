@@ -239,11 +239,24 @@ function clearStars() {
 var bodyNav = document.querySelector('.body__nav');
 bodyNav.addEventListener('click', getQuality);
 
-function toggleQuality(event, child1, child2, text1, text2) {
-  
-  console.log(event.target.parentNode.children[child1]);
-  event.target.parentNode.children[child1].innerText = text1;
-  event.target.parentNode.children[child2].innerText = text2;
+function toggleQuality(event) {
+  var childrenArr = event.target.parentNode.children;
+  // console.log(element.innerText);
+  console.log(childrenArr);
+  // var index = 
+  childrenArr.forEach(element => {
+    console.log(element.innerText);
+    // if(element.innerText === 'Show All Ideas') {
+      // return element;
+    })
+    console.log(index);
+  if(index === 3) {
+    index.innerText = qualityArray[0];
+  } else if (index === 4) {
+    index.innerText = qualityArray[1];
+  } else if (index === 5) {
+    index.innerText = qualityArray[2];
+  }
 }
 
 function changeQualityText(event) {
@@ -252,13 +265,17 @@ function changeQualityText(event) {
 
 function getQuality(event) {
   if(event.target.classList.contains('nav__btn--swill')) {
-    changeQualityText(event);
     filterByQuality(0, sArray = []);
-    toggleQuality(event, 4, 5, 'Plausible', 'Genius');
+    changeQualityText(event);
+    toggleQuality(event);
   } else if (event.target.classList.contains('nav__btn--plausible')) {
     filterByQuality(1, pArray = []);
+    changeQualityText(event);
+    toggleQuality(event);
   } else if (event.target.classList.contains('nav__btn--genius')) {
     filterByQuality(2, gArray = []);
+    changeQualityText(event);
+    toggleQuality(event);
   } 
 }
 
