@@ -239,41 +239,11 @@ function clearStars() {
 var bodyNav = document.querySelector('.body__nav');
 bodyNav.addEventListener('click', getQuality);
 
-<<<<<<< HEAD
-function toggleQuality(event) {
-  var childrenArr = event.target.parentNode.children;
-  // console.log(element.innerText);
-  console.log(childrenArr);
-  // var index = 
-  childrenArr.forEach(element => {
-    console.log(element.innerText);
-    // if(element.innerText === 'Show All Ideas') {
-      // return element;
-    })
-    console.log(index);
-  if(index === 3) {
-    index.innerText = qualityArray[0];
-  } else if (index === 4) {
-    index.innerText = qualityArray[1];
-  } else if (index === 5) {
-    index.innerText = qualityArray[2];
+function toggleQuality(event, child1, child2, tChild, dValue) {
+  if(event.target.parentNode.children[child1] || event.target.parentNode.children[child2]) {
+    event.target.parentNode.children[tChild].innerText = dValue;
   }
 }
-=======
-// function toggleQuality(event) {
-  // if(event.target.textContent === 'Swill') {
-//     console.log(event);
-//     toggleArray[0] = !toggleArray[0];
-//     toggleArray[0] ? getQuality(event) : clearQuality();
-//   } else if (event.target.classList.contains('nav__btn--plausible')) {
-//     toggleArray[1] = !toggleArray[1];
-//     toggleArray[1] ? getQuality(event) : clearQuality();
-//   } else if (event.target.classList.contains('nav__btn--genius')) {
-//     toggleArray[2] = !toggleArray[2];
-//     toggleArray[2] ? getQuality(event) : clearQuality();
-//   }
-// }
->>>>>>> parent of 3d18011... Change sibling inner text
 
 function changeQualityText(event) {
   event.target.textContent = 'Show All Ideas';
@@ -282,19 +252,13 @@ function changeQualityText(event) {
 function getQuality(event) {
   if(event.target.classList.contains('nav__btn--swill')) {
     filterByQuality(0, sArray = []);
-<<<<<<< HEAD
     changeQualityText(event);
-    toggleQuality(event);
-=======
->>>>>>> parent of 3d18011... Change sibling inner text
   } else if (event.target.classList.contains('nav__btn--plausible')) {
     filterByQuality(1, pArray = []);
-    changeQualityText(event);
-    toggleQuality(event);
   } else if (event.target.classList.contains('nav__btn--genius')) {
+    console.log(event.target.parentNode.children[5])
     filterByQuality(2, gArray = []);
-    changeQualityText(event);
-    toggleQuality(event);
+    toggleQuality(event, 4, 5, 3, 'Swill');
   } 
 }
 
