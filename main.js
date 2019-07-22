@@ -211,8 +211,11 @@ function clearCards() {
 }
 
 function filterByStar() {
-  toggleArray[3] = !toggleArray[3];
-  toggleArray[3] ? searchStar() : clearStars();
+  if(starButton.innerText === 'Show Starred Ideas') {
+    searchStar();
+  } else if (starButton.innerText === 'View All Ideas') {
+    clearStars();
+  }
 }
 
 function searchStar() {
