@@ -237,25 +237,29 @@ function clearStars() {
 }
 
 var bodyNav = document.querySelector('.body__nav');
-bodyNav.addEventListener('click', toggleQuality);
+bodyNav.addEventListener('click', getQuality);
 
-function toggleQuality(event) {
-  if(event.target.classList.contains('nav__btn--swill')) {
-    toggleArray[0] = !toggleArray[0];
-    toggleArray[0] ? getQuality(event) : clearQuality();
-  } else if (event.target.classList.contains('nav__btn--plausible')) {
-    toggleArray[1] = !toggleArray[1];
-    toggleArray[1] ? getQuality(event) : clearQuality();
-  } else if (event.target.classList.contains('nav__btn--genius')) {
-    toggleArray[2] = !toggleArray[2];
-    toggleArray[2] ? getQuality(event) : clearQuality();
-  }
+// function toggleQuality(event) {
+  // if(event.target.textContent === 'Swill') {
+//     console.log(event);
+//     toggleArray[0] = !toggleArray[0];
+//     toggleArray[0] ? getQuality(event) : clearQuality();
+//   } else if (event.target.classList.contains('nav__btn--plausible')) {
+//     toggleArray[1] = !toggleArray[1];
+//     toggleArray[1] ? getQuality(event) : clearQuality();
+//   } else if (event.target.classList.contains('nav__btn--genius')) {
+//     toggleArray[2] = !toggleArray[2];
+//     toggleArray[2] ? getQuality(event) : clearQuality();
+//   }
+// }
+
+function changeQualityText(event) {
+  event.target.textContent = 'Show All Ideas';
 }
 
 function getQuality(event) {
   if(event.target.classList.contains('nav__btn--swill')) {
-    toggleArray[0] = !toggleArray[0];
-    toggleArray[0] ? getQuality(event) : clearQuality();
+    changeQualityText(event);
     filterByQuality(0, sArray = []);
   } else if (event.target.classList.contains('nav__btn--plausible')) {
     filterByQuality(1, pArray = []);
