@@ -233,7 +233,6 @@ function clearStars() {
   starButton.innerText = 'Show Starred Ideas';
 }
 
-//EDUARDO TEST
 var bodyNav = document.querySelector('.body__nav');
 bodyNav.addEventListener('click', toggleQuality);
 
@@ -276,7 +275,6 @@ function clearQuality() {
   clearCards(); 
   persistCards(ideasArray);
 }
-//End Eduardo Test
 
 document.querySelector('.form__btn--show').addEventListener('click', showButton)
 
