@@ -211,8 +211,10 @@ function clearCards() {
 }
 
 function filterByStar() {
-  toggleArray[3] = !toggleArray[3];
-  toggleArray[3] ? searchStar() : clearStars();
+  console.log(event.target.textContent)
+  if (event.target.textContent === "Show Starred Ideas"){
+  searchStar()} 
+    else {clearStars()}
 }
 
 function searchStar() {
@@ -247,29 +249,27 @@ function toggleQuality(event) {
     childrenArr[index].innerText = qualityArray[1];
   } else if (index === 11) {
     childrenArr[index].innerText = qualityArray[2];
-  } 
+  }
 }
 
 function changeQualityText(event){
-  if (event.target.textContent  !== 'Show All Ideas') {
-  event.target.textContent = 'Show All Ideas'} else { 
-
+  if (event.target.textContent  === 'Show All Ideas') {
+    persistCards(ideasArray);
+    toggleQuality(event)}
+    else {
+      toggleQuality(event);
+      event.target.textContent = "Show All Ideas"};
   }
-  
-}
 
 function getQuality(event) {
   if(event.target.classList.contains('nav__btn--swill')) {
     filterByQuality(0, sArray = []);
-    toggleQuality(event)
     changeQualityText(event);
   } else if (event.target.classList.contains('nav__btn--plausible')) {
     filterByQuality(1, pArray = []);
-    toggleQuality(event);
     changeQualityText(event);
   } else if (event.target.classList.contains('nav__btn--genius')) {
     filterByQuality(2, gArray = []);
-    toggleQuality(event);
     changeQualityText(event);
   } 
 }
