@@ -211,7 +211,7 @@ function clearCards() {
 }
 
 function filterByStar() {
-  if (event.target.textContent === "Show Starred Ideas"){
+  if (event.target.textContent === "Show Starred Ideas") {
   searchStar()
   } else {
   clearStars()
@@ -228,6 +228,15 @@ function searchStar() {
   }
   persistCards(starArray);
   starButton.innerText = 'View All Ideas'
+}
+
+function searchStarredIdeas() {
+  var searchStarArr = [];
+  for(var i = 0; i < ideasArray.length; i++) {
+    if((ideasArray[i].title.toLowerCase().includes(searchInput.value.toLowerCase()) || ideasArray[i].body.toLowerCase().includes(searchInput.value.toLowerCase())) && ideasArray[i].star === true) {
+      searchStarArr.push(ideasArray[i]);
+  }
+  persistCards(searchStarArr);
 }
 
 function clearStars() {
