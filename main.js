@@ -211,7 +211,6 @@ function clearCards() {
 }
 
 function filterByStar() {
-  console.log(event.target.textContent)
   if (event.target.textContent === "Show Starred Ideas"){
   searchStar()} 
     else {clearStars()}
@@ -261,6 +260,7 @@ function changeQualityText(event){
       event.target.textContent = "Show All Ideas"};
   }
 
+
 function getQuality(event) {
   if(event.target.classList.contains('nav__btn--swill')) {
     filterByQuality(0, sArray = []);
@@ -269,6 +269,7 @@ function getQuality(event) {
     filterByQuality(1, pArray = []);
     changeQualityText(event);
   } else if (event.target.classList.contains('nav__btn--genius')) {
+    console.log(event.target.parentNode.children[5])
     filterByQuality(2, gArray = []);
     changeQualityText(event);
   } 
