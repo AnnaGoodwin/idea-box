@@ -253,6 +253,7 @@ function toggleQuality(event) {
 
 function changeQualityText(event){
   if (event.target.textContent  === 'Show All Ideas') {
+    clearCards();
     persistCards(ideasArray);
     toggleQuality(event)}
     else {
