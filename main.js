@@ -212,8 +212,10 @@ function clearCards() {
 
 function filterByStar() {
   if (event.target.textContent === "Show Starred Ideas"){
-  searchStar()} 
-    else {clearStars()}
+  searchStar()
+  } else {
+  clearStars()
+  }
 }
 
 function searchStar() {
