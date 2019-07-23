@@ -211,11 +211,9 @@ function clearCards() {
 }
 
 function filterByStar() {
-  if(starButton.innerText === 'Show Starred Ideas') {
-    searchStar();
-  } else if (starButton.innerText === 'View All Ideas') {
-    clearStars();
-  }
+  if (event.target.textContent === "Show Starred Ideas"){
+  searchStar()} 
+    else {clearStars()}
 }
 
 function searchStar() {
@@ -239,15 +237,29 @@ function clearStars() {
 var bodyNav = document.querySelector('.body__nav');
 bodyNav.addEventListener('click', getQuality);
 
-function toggleQuality(event, child1, child2, tChild, dValue) {
-  if(event.target.parentNode.children[child1] || event.target.parentNode.children[child2]) {
-    event.target.parentNode.children[tChild].innerText = dValue;
+function toggleQuality(event) {
+  var childrenArr = Array.from(event.target.parentNode.childNodes)
+  var index = childrenArr.findIndex(element => {
+    return element.innerText === 'Show All Ideas'
+  })
+  if (index === 7) {
+    childrenArr[index].innerText = qualityArray[0];
+  } else if (index === 9) {
+    childrenArr[index].innerText = qualityArray[1];
+  } else if (index === 11) {
+    childrenArr[index].innerText = qualityArray[2];
   }
 }
 
-function changeQualityText(event) {
-  event.target.textContent = 'Show All Ideas';
-}
+function changeQualityText(event){
+  if (event.target.textContent  === 'Show All Ideas') {
+    persistCards(ideasArray);
+    toggleQuality(event)}
+    else {
+      toggleQuality(event);
+      event.target.textContent = "Show All Ideas"};
+  }
+
 
 function getQuality(event) {
   if(event.target.classList.contains('nav__btn--swill')) {
@@ -255,10 +267,11 @@ function getQuality(event) {
     changeQualityText(event);
   } else if (event.target.classList.contains('nav__btn--plausible')) {
     filterByQuality(1, pArray = []);
+    changeQualityText(event);
   } else if (event.target.classList.contains('nav__btn--genius')) {
     console.log(event.target.parentNode.children[5])
     filterByQuality(2, gArray = []);
-    toggleQuality(event, 4, 5, 3, 'Swill');
+    changeQualityText(event);
   } 
 }
 
