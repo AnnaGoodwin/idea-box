@@ -5,7 +5,10 @@ var bodyInput = document.querySelector('.form__textarea--body');
 var form = document.querySelector('.section__form');
 var mainSectionBottom = document.querySelector('.main__section--bottom');
 var searchInput = document.querySelector('.form__input--search');
-var starButton = document.querySelector('.div__button--starred')
+var starButton = document.querySelector('.div__button--starred');
+var swillButton = document.querySelector('.nav__btn--swill');
+var plausibleButton = document.querySelector('.nav__btn--plausible');
+var geniusButton = document.querySelector('.nav__btn--genius');
 var ideasArray = [];
 var qualityArray = ['Swill', 'Plausible', 'Genius'];
 var toggleArray = [false, false, false, false];
@@ -30,7 +33,7 @@ mainSectionBottom.addEventListener('click', handleCardInteractions);
 mainSectionBottom.addEventListener('keyup', updateTitle);
 mainSectionBottom.addEventListener('keyup', updateBody);
 mainSectionBottom.addEventListener('keydown', listenForEnter);
-searchInput.addEventListener('keyup', searchIdea);
+searchInput.addEventListener('keyup', searchHandler);
 starButton.addEventListener('click', filterByStar)
 document.querySelector('.body__nav').addEventListener('click', getQuality);
 
@@ -211,9 +214,27 @@ function clearCards() {
 }
 
 function filterByStar() {
-  if (event.target.textContent === "Show Starred Ideas"){
-  searchStar()} 
-    else {clearStars()}
+  if (event.target.textContent === 'Show Starred Ideas') {
+  searchStar()
+  } else {
+  clearStars()
+  }
+}
+
+function searchHandler() {
+  // debugger;
+  clearCards();
+  if (swillButton.innerText === 'Show All Ideas') {
+    qualitySearch(sArray = [], 0);
+  } else if (plausibleButton.innerText === 'Show All Ideas') {
+    qualitySearch(pArray = [], 1);
+  } else if (geniusButton.innerText === 'Show All Ideas') {
+    qualitySearch(gArray = [], 2);
+  } else if(starButton.innerText === 'Show All Ideas') {
+    searchStarredIdeas();
+  } else {
+    searchIdea();
+  }
 }
 
 function searchStar() {
@@ -225,7 +246,29 @@ function searchStar() {
     }
   }
   persistCards(starArray);
-  starButton.innerText = 'View All Ideas'
+  starButton.innerText = 'Show All Ideas'
+}
+
+function searchStarredIdeas() {
+  clearCards();
+  var searchStarArr = [];
+  for(var i = 0; i < ideasArray.length; i++) {
+    if((ideasArray[i].title.toLowerCase().includes(searchInput.value.toLowerCase()) || ideasArray[i].body.toLowerCase().includes(searchInput.value.toLowerCase())) && ideasArray[i].star === true) {
+      searchStarArr.push(ideasArray[i]);
+    }
+    persistCards(searchStarArr);
+  }
+}
+
+function qualitySearch(qArray, qIndex) {
+  clearCards();
+  debugger;
+  for(var i = 0; i < ideasArray.length; i++) {
+    if((ideasArray[i].title.toLowerCase().includes(searchInput.value.toLowerCase()) || ideasArray[i].body.toLowerCase().includes(searchInput.value.toLowerCase())) && ideasArray[i].quality === qIndex) {
+      qArray.push(ideasArray[i]);
+    }
+  }
+    persistCards(qArray);
 }
 
 function clearStars() {
