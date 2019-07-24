@@ -166,7 +166,7 @@ function updateBody(event) {
 
 function ideasMessage() {
   if(ideasArray.length === 0) {
-    mainSectionBottom.insertAdjacentHTML('afterbegin', `<p id='ptag'>Create Ideas</p>`);
+    mainSectionBottom.insertAdjacentHTML('afterbegin', `<p id='ptag'>Create An Idea!</p>`);
   } else {
     var ideaMessage = document.querySelector('#ptag')
     ideaMessage.remove();
