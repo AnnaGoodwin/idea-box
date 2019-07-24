@@ -6,7 +6,7 @@
 
 body {
   display: grid;
-  grid-template-columns: 15%;
+  grid-template-columns: 250px;
 }
 
 main {
