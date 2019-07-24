@@ -12,7 +12,7 @@ body {
 
 main {
   grid-row: 1 /span 2;
-  background-color: #EAEAF4
+  background-color: #EAEAF4;
   width: 100%;
 }
 
