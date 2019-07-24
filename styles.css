@@ -32,6 +32,9 @@ h1 {
 }
 
 .div__p {
+  color: #BFBFDD;
+  font-weight: 600;
+  margin-bottom: 20px;
   padding: 20px 5px;
 
 }
@@ -73,9 +76,10 @@ button {
 }
 
 .nav__h3--quality {
-  margin: 10px 0;
-  font-weight: 400;
+  color: #BFBFDD;
+  font-weight: 700;
   font-size: unset;
+  margin: 10px 0;
 }
 
 .nav__div--stars,
@@ -89,15 +93,17 @@ button {
 }
 
 .form__label--quality {
+  color: #BFBFDD;
   display: block;
   font-size: small;
+  margin-top: 20px;
 }
 
 .form__input--quality {
   width: 100%;
-  height: 30px;
+  height: 50px;
   margin-top: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .div__button--starred,
@@ -105,7 +111,7 @@ button {
   background-color: #5356A4;
   border-color:#353567;
   color: #FFFFFF;
-  font-size: 1em;
+  font-size: 1.2em;
   font-weight: 400;
   width: 100%;
   height: 50px;
