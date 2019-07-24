@@ -30,6 +30,12 @@ h1 {
   font-size: 1.3em;
 }
 
+button {
+  border: none;
+  text-decoration: none;
+  outline: none;
+}
+
 .nav__div--stars {
   border-top: 2px solid #5356A4;
   height: 10vh;
