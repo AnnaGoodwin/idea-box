@@ -170,9 +170,16 @@ form label {
   height: 50px;
   border-radius: 2px
 }
+
+.form__button--save:disabled {
+  background-color: #EAEAF4;
+  color: #A9AAD2;
+}
+
 container {
   display: flex;
 }
+
 .img--search {
   background-color: #1F1F3D;
   border-radius: 2px;
