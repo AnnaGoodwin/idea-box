@@ -13,6 +13,7 @@ body {
 main {
   grid-row: 1 /span 2;
   background-color: #EAEAF4
+  width: 100%;
 }
 
 nav {
@@ -193,13 +194,12 @@ container {
 }
 .main__section--bottom {
   background-color: #EAEAF4;
-  /* height: 60vh; */
-
 }
+
 .section__article {
   display: inline-block;
   margin: 15px;
-  width: 200px;
+  width: 30%;
 }
 
 .article__header {
@@ -229,7 +229,7 @@ container {
 }
 
 .div__p--text {
-
+  height: 10em;
 }
 
 #ptag {
