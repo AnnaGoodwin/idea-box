@@ -10,17 +10,7 @@ var swillButton = document.querySelector('.nav__btn--swill');
 var plausibleButton = document.querySelector('.nav__btn--plausible');
 var geniusButton = document.querySelector('.nav__btn--genius');
 var ideasArray = [];
-var qualityArray = ['Swill', 'Plausible', 'Genius'];
-
-function mapArray(){
-  if (JSON.parse(localStorage.getItem("ideaArray")) === null)
-  {ideasArray = [];
-  } else {
-    ideasArray = JSON.parse(localStorage.getItem("ideaArray")).map(element => {
-      return new Idea(element)
-    })
-  };
-} 
+var qualityArray = ['Swill', 'Plausible', 'Genius']; 
 
 //**** On Page Load ******
 // Event Listeners
@@ -39,6 +29,16 @@ document.querySelector('.body__nav').addEventListener('click', getQuality);
 
 
 // Functions
+function mapArray(){
+  if (JSON.parse(localStorage.getItem("ideaArray")) === null)
+  {ideasArray = [];
+  } else {
+    ideasArray = JSON.parse(localStorage.getItem("ideaArray")).map(element => {
+      return new Idea(element)
+    })
+  };
+}
+
 function disableSaveButton(){
   if (titleInput.value === '' || bodyInput.value === '') {
     saveButton.disabled = true;
