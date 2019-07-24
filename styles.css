@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  margin: auto 0;
+  margin: 0;
   /* border: 1px solid red; */
 }
 
@@ -19,15 +19,22 @@ main {
 nav {
   background-color: #1F1F3D;
   color: #FFFFFF;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-items: center;
   width: 100%;
   grid-row: 1 / span 3;
-  height: 100vh;
+  height: 100%;
 }
 
 h1 {
   font-size: 1.3em;
+  padding: 20px 5px;
+}
+
+.div__p {
+  padding: 20px 5px;
+
 }
 
 button {
@@ -36,10 +43,62 @@ button {
   outline: none;
 }
 
+.quality-btn {
+  font-size: 1.25em;
+  background-color: #1f1F3D;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0px;
+  padding: 10px 0;
+  font-weight: 300;
+}
+
+.quality-btn:hover {
+  background-color: #D14119;
+  border-left: 10px solid #F58E72;
+  padding-left: 10px;
+}
+
 .nav__div--stars {
   border-top: 2px solid #5356A4;
-  height: 10vh;
-  width: 90%;
+  border-bottom: 2px solid #5356A4;
+  width: 100%;
+  /*padding: 0 15px;*/
+}
+
+.div__button--starred {
+  margin-bottom: 20px;
+  height: 30px;
+  width: 100%;
+}
+
+.nav__h3--quality {
+  margin: 10px 0;
+  font-weight: 400;
+  font-size: unset;
+}
+
+.nav__div--stars,
+.nav__h3--quality,
+.nav__div--quality,
+.nav__btn--swill,
+.nav__btn--plausible,
+.nav__btn--genius,
+.nav__form {
+  padding: 10px;
+}
+
+.form__label--quality {
+  display: block;
+  font-size: small;
+}
+
+.form__input--quality {
+  width: 100%;
+  height: 30px;
+  margin-top: 5px;
+  margin-bottom: 15px;
 }
 
 .main__section--top {
@@ -61,10 +120,9 @@ button {
   color: #FFFFFF;
   font-size: 1em;
   font-weight: 400;
-  height: 6vh;
-  margin-top: 10%;
-  width: 95%;
-
+  width: 100%;
+  height: 30px;
+  border-radius: 2px;
 }
 
 .main__section--bottom {
