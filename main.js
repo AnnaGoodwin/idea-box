@@ -11,7 +11,7 @@ var plausibleButton = document.querySelector('.nav__btn--plausible');
 var geniusButton = document.querySelector('.nav__btn--genius');
 var ideasArray = [];
 var qualityArray = ['Swill', 'Plausible', 'Genius'];
-var toggleArray = [false, false, false, false];
+// var toggleArray = [false, false, false, false];
 
 function mapArray(){
   if (JSON.parse(localStorage.getItem("ideaArray")) === null)
