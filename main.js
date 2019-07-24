@@ -10,18 +10,7 @@ var swillButton = document.querySelector('.nav__btn--swill');
 var plausibleButton = document.querySelector('.nav__btn--plausible');
 var geniusButton = document.querySelector('.nav__btn--genius');
 var ideasArray = [];
-var qualityArray = ['Swill', 'Plausible', 'Genius'];
-// var toggleArray = [false, false, false, false];
-
-function mapArray(){
-  if (JSON.parse(localStorage.getItem("ideaArray")) === null)
-  {ideasArray = [];
-  } else {
-    ideasArray = JSON.parse(localStorage.getItem("ideaArray")).map(element => {
-      return new Idea(element)
-    })
-  };
-} 
+var qualityArray = ['Swill', 'Plausible', 'Genius']; 
 
 //**** On Page Load ******
 // Event Listeners
@@ -40,6 +29,16 @@ document.querySelector('.body__nav').addEventListener('click', getQuality);
 
 
 // Functions
+function mapArray(){
+  if (JSON.parse(localStorage.getItem("ideaArray")) === null)
+  {ideasArray = [];
+  } else {
+    ideasArray = JSON.parse(localStorage.getItem("ideaArray")).map(element => {
+      return new Idea(element)
+    })
+  };
+}
+
 function disableSaveButton(){
   if (titleInput.value === '' || bodyInput.value === '') {
     saveButton.disabled = true;
@@ -222,16 +221,15 @@ function filterByStar() {
 }
 
 function searchHandler() {
-  // debugger;
   clearCards();
   if (swillButton.innerText === 'Show All Ideas') {
-    qualitySearch(sArray = [], 0);
+    qualitySearch(sArray = [], 0, 'quality');
   } else if (plausibleButton.innerText === 'Show All Ideas') {
-    qualitySearch(pArray = [], 1);
+    qualitySearch(pArray = [], 1, 'quality');
   } else if (geniusButton.innerText === 'Show All Ideas') {
-    qualitySearch(gArray = [], 2);
+    qualitySearch(gArray = [], 2, 'quality');
   } else if(starButton.innerText === 'Show All Ideas') {
-    searchStarredIdeas();
+    qualitySearch(starArray = [], true, 'star');
   } else {
     searchIdea();
   }
@@ -249,22 +247,10 @@ function searchStar() {
   starButton.innerText = 'Show All Ideas'
 }
 
-function searchStarredIdeas() {
+function qualitySearch(qArray, qIndex, property) {
   clearCards();
-  var searchStarArr = [];
   for(var i = 0; i < ideasArray.length; i++) {
-    if((ideasArray[i].title.toLowerCase().includes(searchInput.value.toLowerCase()) || ideasArray[i].body.toLowerCase().includes(searchInput.value.toLowerCase())) && ideasArray[i].star === true) {
-      searchStarArr.push(ideasArray[i]);
-    }
-    persistCards(searchStarArr);
-  }
-}
-
-function qualitySearch(qArray, qIndex) {
-  clearCards();
-  debugger;
-  for(var i = 0; i < ideasArray.length; i++) {
-    if((ideasArray[i].title.toLowerCase().includes(searchInput.value.toLowerCase()) || ideasArray[i].body.toLowerCase().includes(searchInput.value.toLowerCase())) && ideasArray[i].quality === qIndex) {
+    if((ideasArray[i].title.toLowerCase().includes(searchInput.value.toLowerCase()) || ideasArray[i].body.toLowerCase().includes(searchInput.value.toLowerCase())) && ideasArray[i][property] === qIndex) {
       qArray.push(ideasArray[i]);
     }
   }
