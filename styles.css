@@ -7,10 +7,12 @@
 body {
   display: grid;
   grid-template-columns: 250px;
+  height: 100vh;
 }
 
 main {
   grid-row: 1 /span 2;
+  background-color: #EAEAF4
   width: 100%;
 }
 
@@ -20,9 +22,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-items: center;
-  width: 100%;
-  grid-row: 1 / span 3;
-  height: 100%;
+  grid-row: 1 / span 2;
 }
 
 h1 {
@@ -116,15 +116,17 @@ button {
   height: 50px;
   border-radius: 2px;
 }
+.div__button--starred:hover,
+.form__button--quality:hover {
+  background-color: #D14119
+}
 .main__section--top {
   background-color: #A9AAD2;
-  height: 350px;
   display: flex;
   justify-content: center;
 }
 
 .section__form{
-  /* background-color: papayawhip; */
   display: flex;
   flex-direction: column;
   width: 350px;
@@ -154,7 +156,7 @@ form label {
 .form__textarea--body {
   border: 1px solid #1F1F3D;
   border-radius: 2px;
-  height: 85px;
+  height: 100px;
   resize: none;
 }
 
@@ -192,7 +194,6 @@ container {
 }
 .main__section--bottom {
   background-color: #EAEAF4;
-  height: 100%;
 }
 
 .section__article {
@@ -207,6 +208,14 @@ container {
   justify-content: space-between;
   width:100%;
 
+}
+
+.header__img--star:hover {
+  content: url(images/star-active.svg)
+}
+
+.header__img--x:hover {
+  content: url(images/delete-active.svg);
 }
 
 .article__div {
@@ -240,6 +249,14 @@ container {
   color: #FFFFFF;
   margin-top: 6px;
   font-size: .8em;
+}
+
+.button__img--upvote:hover {
+  content: url(images/upvote-active.svg);
+}
+
+.button__img--downvote:hover {
+  content: url(images/downvote-active.svg)
 }
 
 footer img {
