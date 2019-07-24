@@ -78,7 +78,7 @@ function displayIdeaCard(newIdeaObj) {
     `<article class="section__article" data-identifier="${newIdeaObj.id}">
       <header class="article__header">
         <img class="header__img--star" src="${starSource}" alt="star">
-        <img class="header__img--x" src="images/delete.svg" alt="x">
+        <img class="header__img--x" src="images/delete.svg" alt="delete button">
       </header>
       <div class="article__div">
         <h3 class="div__h3--title" contenteditable="true">${newIdeaObj.title}</h3>
