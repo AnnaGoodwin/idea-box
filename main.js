@@ -5,19 +5,19 @@ var titleInput = document.querySelector('.form__input--title');
 var bodyInput = document.querySelector('.form__textarea--body');
 var form = document.querySelector('.section__form');
 var mainSectionBottom = document.querySelector('.main__section--bottom');
-var hamburger = document.querySelector('.div__img--hamburger')
-var navBar = document.querySelector('.nav__container1')
+var hamburger = document.querySelector('.div__img--hamburger');
+var navBar = document.querySelector('.nav__container1');
 var searchInput = document.querySelector('.form__input--search');
 var starButton = document.querySelector('.div__button--starred');
 var swillButton = document.querySelector('.nav__btn--swill');
 var plausibleButton = document.querySelector('.nav__btn--plausible');
 var geniusButton = document.querySelector('.nav__btn--genius');
-var showBtn = document.querySelector('.form__btn--show')
+var showBtn = document.querySelector('.form__btn--show');
 var ideasArray = [];
 var qualityArray = ['Swill', 'Plausible', 'Genius'];
 
 // Event Listeners
-window.addEventListener('load', handlePageLoad)
+window.addEventListener('load', handlePageLoad);
 bodyNav.addEventListener('click', getQuality);
 form.addEventListener('keyup', disableSaveButton);
 saveButton.addEventListener('click', handleSaveButton);
@@ -25,10 +25,10 @@ mainSectionBottom.addEventListener('click', handleCardInteractions);
 mainSectionBottom.addEventListener('keyup', updateText);
 mainSectionBottom.addEventListener('keydown', listenForEnter);
 searchInput.addEventListener('keyup', searchHandler);
-starButton.addEventListener('click', filterByStar)
+starButton.addEventListener('click', filterByStar);
 document.querySelector('.body__nav').addEventListener('click', getQuality);
-showBtn.addEventListener('click', showButton)
-hamburger.addEventListener('click', toggleHamburger)
+showBtn.addEventListener('click', showButton);
+hamburger.addEventListener('click', toggleHamburger);
 
 // Functions
 function mapArray() {
