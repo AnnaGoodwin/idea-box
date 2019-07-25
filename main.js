@@ -12,6 +12,7 @@ var starButton = document.querySelector('.div__button--starred');
 var swillButton = document.querySelector('.nav__btn--swill');
 var plausibleButton = document.querySelector('.nav__btn--plausible');
 var geniusButton = document.querySelector('.nav__btn--genius');
+var showBtn = document.querySelector('.form__btn--show')
 var ideasArray = [];
 var qualityArray = ['Swill', 'Plausible', 'Genius'];
 
@@ -26,7 +27,7 @@ mainSectionBottom.addEventListener('keydown', listenForEnter);
 searchInput.addEventListener('keyup', searchHandler);
 starButton.addEventListener('click', filterByStar)
 document.querySelector('.body__nav').addEventListener('click', getQuality);
-document.querySelector('.form__btn--show').addEventListener('click', showButton)
+showBtn.addEventListener('click', showButton)
 hamburger.addEventListener('click', toggleHamburger)
 
 // Functions
@@ -57,6 +58,7 @@ function emptyInputs() {
 function handleSaveButton() {
   instaniateIdea();
   emptyInputs();
+  showBtnToggle();
   showMessage(ideasArray, 'Create Some Ideas!');
 }
 
@@ -69,7 +71,7 @@ function handleCardInteractions() {
 function handlePageLoad() {
   disableSaveButton();
   mapArray();
-  showTen(ideasArray, tenArray = []);
+  showBtnToggle();
   showMessage(ideasArray, 'Create Some Ideas!');
 }
 
@@ -110,6 +112,7 @@ function deleteIdeaCard(event) {
   if (event.target.classList.contains('header__img--x')) {
     event.target.parentNode.parentNode.remove();
     removeFromStorage(event);
+    showBtnToggle()
     showMessage(ideasArray, 'Create Some Ideas!');
   }
 }
@@ -320,17 +323,28 @@ function showTen(array1, array2) {
 }
 
 function showButton() {
-  if (document.querySelector('.form__btn--show').innerText === 'Show More') {
+  if (showBtn.innerText === 'Show More') {
     clearCards();
     persistCards(ideasArray);
-    document.querySelector('.form__btn--show').innerText = 'Show Less';
-  } else if (document.querySelector('.form__btn--show').innerText === 'Show Less') {
+    showBtn.innerText = 'Show Less';
+  } else if (showBtn.innerText === 'Show Less') {
     clearCards();
     showTen(ideasArray, tenArray = []);
-    document.querySelector('.form__btn--show').innerText = 'Show More';
+    showBtn.innerText = 'Show More';
   }
 }
 
+function showBtnToggle() {
+  if (ideasArray.length <= 10) {
+    showBtn.hidden = true;
+    clearCards();
+    persistCards(ideasArray)
+  } else {
+    showBtn.hidden = false;
+    clearCards();
+    showTen(ideasArray, tenArray = [])
+  }
+}
 function toggleHamburger(event) {
   if (navBar.classList.contains('hidden')) {
     event.target.setAttribute('src', 'images/menu-close.svg');
