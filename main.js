@@ -345,6 +345,7 @@ function showBtnToggle() {
     showTen(ideasArray, tenArray = []);
   }
 }
+
 function toggleHamburger(event) {
   if (navBar.classList.contains('hidden')) {
     event.target.setAttribute('src', 'images/menu-close.svg');
