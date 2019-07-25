@@ -16,9 +16,10 @@ class Idea {
     this.saveToStorage(array);
   }
 
-  updateIdea(newTitle, array) {
-    //Use saveToStorage
-
+  updateIdea(newTitle, newBody, array) {
+    this.title = newTitle;
+    this.body = newBody;
+    this.saveToStorage(array)
   }
 
   changeQualityScore(event, voteClass) {
