@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
-  margin: 0;
   font-family: 'Open Sans';
+  margin: 0;
   transition: ease all .3s;
 }
 
@@ -12,8 +12,8 @@ body {
 }
 
 main {
-  grid-row: 1 /span 2;
   background-color: #EAEAF4;
+  grid-row: 1 /span 2;
   width: 100%;
 }
 
@@ -22,19 +22,19 @@ nav {
   color: #FFFFFF;
   display: flex;
   flex-direction: column;
-  justify-items: center;
   grid-row: 1 / span 2;
+}
+
+h1 {
+  font-size: 1.3em;
+  font-weight: 700;
+  padding: 20px 5px;
 }
 
 .div__img--hamburger {
   display: none;
 }
 
-h1 {
-  font-size: 1.3em;
-  padding: 20px 5px;
-  font-weight: 700;
-}
 
 .nav__container1 {
   display: flex;
@@ -46,25 +46,24 @@ h1 {
   font-weight: 600;
   margin-bottom: 20px;
   padding: 20px 5px;
-
 }
 
 button {
   border: none;
   height: 50px;
-  text-decoration: none;
   outline: none;
+  text-decoration: none;
 }
 
 .quality-btn {
-  font-size: 1.25em;
   background-color: #1f1F3D;
   color: #FFFFFF;
   display: flex;
+  font-size: 1.25em;
+  font-weight: 300;
   justify-content: flex-start;
   margin: 0px;
   padding: 10px 0;
-  font-weight: 300;
 }
 
 .quality-btn:hover {
@@ -79,21 +78,21 @@ button {
 }
 
 .nav__div--stars {
-  border-top: 2px solid #5356A4;
   border-bottom: 2px solid #5356A4;
+  border-top: 2px solid #5356A4;
   width: 100%;
 }
 
 .div__button--starred {
-  margin-bottom: 20px;
   height: 30px;
+  margin-bottom: 20px;
   width: 100%;
 }
 
 .nav__h3--quality {
   color: #BFBFDD;
-  font-weight: 700;
   font-size: unset;
+  font-weight: 700;
   margin: 10px 0;
 }
 
@@ -116,10 +115,10 @@ button {
 }
 
 .form__input--quality {
-  width: 100%;
   height: 50px;
-  margin-top: 5px;
   margin-bottom: 25px;
+  margin-top: 5px;
+  width: 100%;
 }
 
 .div__button--starred,
@@ -127,12 +126,12 @@ button {
 .form__btn--show {
   background-color: #5356A4;
   border-color:#353567;
+  border-radius: 2px;
   color: #FFFFFF;
   font-size: 1.2em;
   font-weight: 400;
-  width: 100%;
   height: 50px;
-  border-radius: 2px;
+  width: 100%;
 }
 
 .form__btn--show {
@@ -157,9 +156,10 @@ button {
 }
 
 .form {
-  margin-bottom: 20px;
   height: 30px;
+  margin-bottom: 20px;
 }
+
 form label {
   color: #1F1F3D;
   font-size: 1em;
@@ -172,14 +172,14 @@ form label {
 }
 
 .form__input--title {
-  height: 50px;
-  border: 1px solid #1F1F3D;
   border-radius: 2px;
+  border: 1px solid #1F1F3D;
+  height: 50px;
 }
 
 .form__textarea--body {
-  border: 1px solid #1F1F3D;
   border-radius: 2px;
+  border: 1px solid #1F1F3D;
   height: 100px;
   resize: none;
 }
@@ -187,18 +187,18 @@ form label {
 .form__button--save {
   background-color: #1F1F3D;
   border-color:#353567;
+  border-radius: 2px;
   color: #FFFFFF;
   font-size: 1.3em;
   font-weight: 400;
-  width: 100%;
   height: 50px;
-  border-radius: 2px
+  width: 100%;
 }
 
 .form__button--save:disabled {
   background-color: #EAEAF4;
-  color: #A9AAD2;
   border: 1px solid #1F1F3D;
+  color: #A9AAD2;
 }
 
 container {
@@ -210,13 +210,13 @@ container {
   border-radius: 2px;
   display: inline;
   height: 50px;
-  padding: 7px;
   margin-right: 0;
+  padding: 7px;
 }
 
 .form__input--search {
-  border: 1px solid #1F1F3D;
   border-radius: 2px;
+  border: 1px solid #1F1F3D;
   display: inline-block;
   font-size: 1em;
   height: 50px;
@@ -232,16 +232,15 @@ container {
 .section__article {
   display: inline-block;
   margin: 15px;
-  width: 350px;
   text-align: left;
+  width: 350px;
 }
 
 .article__header {
   background-color: #1F1F3D;
   display: flex;
   justify-content: space-between;
-  width:100%;
-
+  width: 100%;
 }
 
 .header__img--star:hover {
@@ -267,10 +266,10 @@ container {
 }
 
 #ptag {
-    text-align: center;
     font-size: 1.5em;
-    padding-top: 15px;
     font-weight: 600;
+    padding-top: 15px;
+    text-align: center;
 }
 
 .article__footer {
@@ -281,8 +280,8 @@ container {
 
 .footer__p--quality {
   color: #FFFFFF;
-  margin-top: 6px;
   font-size: .8em;
+  margin-top: 6px;
 }
 
 .button__img--upvote:hover {
@@ -324,7 +323,6 @@ article img {
     margin: 20px auto;
     width: 100%;
   }
-
 }
 
 @media screen and (max-width: 750px) {
@@ -332,19 +330,19 @@ article img {
     display: block;
   }
 
+  h1 {
+    margin: auto;
+  }
+
   .nav__div {
     display: flex;
   }
 
-  h1 {
-    margin: auto;
-  }
-  
   .div__img--hamburger {
     display: inline-block;
     height: 50px;
-    width: 50px;
     margin: auto 10px;
+    width: 50px;
   }
 
   .hidden {

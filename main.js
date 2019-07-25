@@ -1,4 +1,5 @@
-// *******Variables******
+// Variables
+var bodyNav = document.querySelector('.body__nav');
 var saveButton = document.querySelector('.form__button--save');
 var titleInput = document.querySelector('.form__input--title');
 var bodyInput = document.querySelector('.form__textarea--body');
@@ -14,11 +15,9 @@ var geniusButton = document.querySelector('.nav__btn--genius');
 var ideasArray = [];
 var qualityArray = ['Swill', 'Plausible', 'Genius'];
 
-
-//**** On Page Load ******
 // Event Listeners
 window.addEventListener('load', handlePageLoad)
-
+bodyNav.addEventListener('click', getQuality);
 form.addEventListener('keyup', disableSaveButton);
 saveButton.addEventListener('click', handleSaveButton);
 mainSectionBottom.addEventListener('click', handleCardInteractions);
@@ -27,33 +26,21 @@ mainSectionBottom.addEventListener('keydown', listenForEnter);
 searchInput.addEventListener('keyup', searchHandler);
 starButton.addEventListener('click', filterByStar)
 document.querySelector('.body__nav').addEventListener('click', getQuality);
+document.querySelector('.form__btn--show').addEventListener('click', showButton)
 hamburger.addEventListener('click', toggleHamburger)
 
-function toggleHamburger(event) {
-    if(navBar.classList.contains('hidden')) {
-      event.target.setAttribute('src', 'images/menu-close.svg');
-      navBar.classList.add('show');
-      navBar.classList.remove('hidden');
-      mainSectionBottom.style.opacity = '.2';
-    } else if(navBar.classList.contains('show')) {
-      event.target.setAttribute('src', 'images/menu.svg');
-      navBar.classList.add('hidden');
-      navBar.classList.remove('show');
-    }
-}
-
 // Functions
-function mapArray(){
-  if (JSON.parse(localStorage.getItem("ideaArray")) === null)
-  {ideasArray = [];
+function mapArray() {
+  if (JSON.parse(localStorage.getItem("ideaArray")) === null) {
+    ideasArray = [];
   } else {
     ideasArray = JSON.parse(localStorage.getItem("ideaArray")).map(element => {
-      return new Idea(element)
+      return new Idea(element);
     })
   };
 }
 
-function disableSaveButton(){
+function disableSaveButton() {
   if (titleInput.value === '' || bodyInput.value === '') {
     saveButton.disabled = true;
   } else {
@@ -79,7 +66,7 @@ function handleCardInteractions() {
   toggleVote(event);
 }
 
-function handlePageLoad(){
+function handlePageLoad() {
   disableSaveButton();
   mapArray();
   showTen(ideasArray, tenArray = []);
@@ -103,7 +90,7 @@ function displayIdeaCard(newIdeaObj) {
         <p class="footer__p--quality">Quality: <span class="quality">${qualityArray[newIdeaObj.quality]}</span></p>
         <img class="button__img--downvote" src="images/downvote.svg" alt="downvote">
       </footer>
-    </article>`)
+    </article>`);
 }
 
 function instaniateIdea() {
@@ -120,7 +107,7 @@ function persistCards(array) {
 }
 
 function deleteIdeaCard(event) {
-  if(event.target.classList.contains('header__img--x')) {
+  if (event.target.classList.contains('header__img--x')) {
     event.target.parentNode.parentNode.remove();
     removeFromStorage(event);
     ideasMessage();
@@ -133,7 +120,7 @@ function removeFromStorage(event) {
 }
 
 function toggleStar(event) {
-  if(event.target.classList.contains('header__img--star')) {
+  if (event.target.classList.contains('header__img--star')) {
     var targetObject = findObject(event);
     targetObject.updateStar();
     var sourcePath = targetObject.star ? 'images/star-active.svg' : 'images/star.svg';
@@ -145,12 +132,8 @@ function toggleStar(event) {
 function findTargetIndex(event) {
   var identity = event.target.closest('.section__article').dataset.identifier;
   var targetIndex = ideasArray.findIndex(obj => {
-    return parseInt(identity) === obj.id
-  });function cardButtonHover(e, location, activeButton) {
-  if (e.target.classList.contains(location)) {
-    e.target.setAttribute('src', `idea-box-icons/${activeButton}`);
-  }
-}
+    return parseInt(identity) === obj.id;
+  }) 
   return targetIndex;
 }
 
@@ -165,15 +148,15 @@ function updateText(event) {
     var newTitle = event.target.closest('.section__article').querySelector('.div__h3--title').innerText;
     var newBody = event.target.closest('.section__article').querySelector('.div__p--text').innerText;
     var targetObject = findObject(event);
-    targetObject.updateIdea(newTitle, newBody, ideasArray)
+    targetObject.updateIdea(newTitle, newBody, ideasArray);
   }
 }
 
 function ideasMessage() {
-  if(ideasArray.length === 0) {
+  if (ideasArray.length === 0) {
     mainSectionBottom.insertAdjacentHTML('afterbegin', `<p id='ptag'>Create An Idea!</p>`);
   } else {
-    var ideaMessage = document.querySelector('#ptag')
+    var ideaMessage = document.querySelector('#ptag');
     ideaMessage.remove();
   }
 }
@@ -185,10 +168,9 @@ function listenForEnter(event) {
   }
 }
 
-var upvoteClass = 'button__img--upvote'
-var downvoteClass = 'button__img--downvote'
-
 function toggleVote(event) {
+  var upvoteClass = 'button__img--upvote';
+  var downvoteClass = 'button__img--downvote';
   var targetObj = findObject(event);
   if (event.target.classList.contains(upvoteClass)) {
     targetObj.changeQualityScore(event, upvoteClass);
@@ -202,10 +184,10 @@ function toggleVote(event) {
 }
 
 function searchIdea() {
-    clearCards();
-    var searchArray = [];
-  for(var i = 0; i < ideasArray.length; i++) {
-    if(ideasArray[i].title.toLowerCase().includes(searchInput.value.toLowerCase()) || ideasArray[i].body.toLowerCase().includes(searchInput.value.toLowerCase())) {
+  clearCards();
+  var searchArray = [];
+  for (var i = 0; i < ideasArray.length; i++) {
+    if (ideasArray[i].title.toLowerCase().includes(searchInput.value.toLowerCase()) || ideasArray[i].body.toLowerCase().includes(searchInput.value.toLowerCase())) {
       searchArray.push(ideasArray[i]);
     }
   }
@@ -218,9 +200,9 @@ function clearCards() {
 
 function filterByStar() {
   if (event.target.textContent === 'Show Starred Ideas') {
-  searchStar()
+  searchStar();
   } else {
-  clearStars()
+  clearStars();
   }
 }
 
@@ -232,7 +214,7 @@ function searchHandler() {
     qualitySearch(pArray = [], 1, 'quality');
   } else if (geniusButton.innerText === 'Show All Ideas') {
     qualitySearch(gArray = [], 2, 'quality');
-  } else if(starButton.innerText === 'Show All Ideas') {
+  } else if (starButton.innerText === 'Show All Ideas') {
     qualitySearch(starArray = [], true, 'star');
   } else {
     searchIdea();
@@ -248,7 +230,7 @@ function searchStar() {
     }
   }
   persistCards(starArray);
-  starButton.innerText = 'Show All Ideas'
+  starButton.innerText = 'Show All Ideas';
 }
 
 function qualitySearch(qArray, qIndex, property) {
@@ -258,7 +240,7 @@ function qualitySearch(qArray, qIndex, property) {
       qArray.push(ideasArray[i]);
     }
   }
-    persistCards(qArray);
+  persistCards(qArray);
 }
 
 function clearStars() {
@@ -267,14 +249,10 @@ function clearStars() {
   starButton.innerText = 'Show Starred Ideas';
 }
 
-var bodyNav = document.querySelector('.body__nav');
-bodyNav.addEventListener('click', getQuality);
-
 function toggleQuality(event) {
   var childrenArr = Array.from(event.target.parentNode.childNodes)
-  debugger;
   var index = childrenArr.findIndex(element => {
-    return element.innerText === 'Show All Ideas'
+    return element.innerText === 'Show All Ideas';
   })
   if (index === 5) {
     childrenArr[index].innerText = qualityArray[0];
@@ -288,17 +266,17 @@ function toggleQuality(event) {
   }
 }
 
-function changeQualityText(event){
+function changeQualityText(event) {
   if (event.target.textContent  === 'Show All Ideas') {
     clearCards();
     persistCards(ideasArray);
-    toggleQuality(event)}
-    else {
-      toggleQuality(event);
-      event.target.classList.add('active')
-      event.target.textContent = "Show All Ideas"};
+    toggleQuality(event);
+  } else {
+    toggleQuality(event);
+    event.target.classList.add('active');
+    event.target.textContent = "Show All Ideas";
   }
-
+}
 
 function getQuality(event) {
   if(event.target.classList.contains('nav__btn--swill')) {
@@ -308,7 +286,6 @@ function getQuality(event) {
     filterByQuality(1, pArray = []);
     changeQualityText(event);
   } else if (event.target.classList.contains('nav__btn--genius')) {
-    console.log(event.target.parentNode.children[5])
     filterByQuality(2, gArray = []);
     changeQualityText(event);
   } 
@@ -329,12 +306,10 @@ function clearQuality() {
   persistCards(ideasArray);
 }
 
-document.querySelector('.form__btn--show').addEventListener('click', showButton)
-
-function showTen(array1, array2){
-  if (array1.length > 10 ){
-    for (i = array1.length -1; i >= array1.length - 10; i--){
-      array2.push(array1[i])
+function showTen(array1, array2) {
+  if (array1.length > 10 ) {
+    for (i = array1.length -1; i >= array1.length - 10; i--) {
+      array2.push(array1[i]);
     }
     array2.reverse();
     persistCards(array2)
@@ -343,8 +318,8 @@ function showTen(array1, array2){
   }
 }
 
-function showButton(){
-  if (document.querySelector('.form__btn--show').innerText === 'Show More'){
+function showButton() {
+  if (document.querySelector('.form__btn--show').innerText === 'Show More') {
     clearCards();
     persistCards(ideasArray);
     document.querySelector('.form__btn--show').innerText = 'Show Less';
@@ -352,5 +327,18 @@ function showButton(){
     clearCards();
     showTen(ideasArray, tenArray = []);
     document.querySelector('.form__btn--show').innerText = 'Show More';
+  }
+}
+
+function toggleHamburger(event) {
+  if (navBar.classList.contains('hidden')) {
+    event.target.setAttribute('src', 'images/menu-close.svg');
+    navBar.classList.add('show');
+    navBar.classList.remove('hidden');
+    mainSectionBottom.style.opacity = '.2';
+  } else if (navBar.classList.contains('show')) {
+    event.target.setAttribute('src', 'images/menu.svg');
+    navBar.classList.add('hidden');
+    navBar.classList.remove('show');
   }
 }

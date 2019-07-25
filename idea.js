@@ -19,7 +19,7 @@ class Idea {
   updateIdea(newTitle, newBody, array) {
     this.title = newTitle;
     this.body = newBody;
-    this.saveToStorage(array)
+    this.saveToStorage(array);
   }
 
   changeQualityScore(event, voteClass) {
