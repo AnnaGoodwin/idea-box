@@ -118,7 +118,8 @@ button {
 }
 
 .div__button--starred,
-.form__button--quality {
+.form__button--quality,
+.form__btn--show {
   background-color: #5356A4;
   border-color:#353567;
   color: #FFFFFF;
@@ -128,8 +129,14 @@ button {
   height: 50px;
   border-radius: 2px;
 }
+
+.form__btn--show {
+  margin-top: 20px;
+}
+
 .div__button--starred:hover,
-.form__button--quality:hover {
+.form__button--quality:hover,
+.form__btn--show:hover {
   background-color: #D14119
 }
 .main__section--top {
