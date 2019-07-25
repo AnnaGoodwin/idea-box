@@ -19,8 +19,8 @@ window.addEventListener('load', handlePageLoad)
 form.addEventListener('keyup', disableSaveButton);
 saveButton.addEventListener('click', handleSaveButton);
 mainSectionBottom.addEventListener('click', handleCardInteractions);
-mainSectionBottom.addEventListener('keyup', updateTitle);
-mainSectionBottom.addEventListener('keyup', updateBody);
+mainSectionBottom.addEventListener('keyup', updateText);
+// mainSectionBottom.addEventListener('keyup', updateBody);
 mainSectionBottom.addEventListener('keydown', listenForEnter);
 searchInput.addEventListener('keyup', searchHandler);
 starButton.addEventListener('click', filterByStar)
@@ -164,6 +164,15 @@ function updateBody(event) {
   }
 }
 
+function updateText(event) {
+  if (event.target.classList.contains('div__h3--title') || event.target.classList.contains('div__p--text')) {
+    var newTitle = event.target.closest('.section__article').querySelector('.div__h3--title').innerText;
+    var newBody = event.target.closest('.section__article').querySelector('.div__p--text').innerText;
+    var targetObject = findObject(event);
+    targetObject.updateIdea(newTitle, newBody, ideasArray)
+  }
+}
+
 function ideasMessage() {
   if(ideasArray.length === 0) {
     mainSectionBottom.insertAdjacentHTML('afterbegin', `<p id='ptag'>Create An Idea!</p>`);
@@ -176,8 +185,9 @@ function ideasMessage() {
 function listenForEnter(event) {
   if (event.key === 'Enter') {
     event.target.blur();
-    updateBody();
-    updatedTitle();
+    // updateBody();
+    // updatedTitle();
+    updateText(event);
   }
 }
 
