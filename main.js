@@ -338,7 +338,7 @@ function showBtnToggle() {
   if (ideasArray.length <= 10) {
     showBtn.hidden = true;
     clearCards();
-    persistCards(ideasArray)
+    persistCards(ideasArray);
   } else {
     showBtn.hidden = false;
     clearCards();
