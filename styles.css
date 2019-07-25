@@ -78,7 +78,7 @@ container {
   background-color: #D14119;
 }
 
-.section__form{
+.section__form {
   display: flex;
   flex-direction: column;
   width: 350px;
