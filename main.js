@@ -20,7 +20,6 @@ form.addEventListener('keyup', disableSaveButton);
 saveButton.addEventListener('click', handleSaveButton);
 mainSectionBottom.addEventListener('click', handleCardInteractions);
 mainSectionBottom.addEventListener('keyup', updateText);
-// mainSectionBottom.addEventListener('keyup', updateBody);
 mainSectionBottom.addEventListener('keydown', listenForEnter);
 searchInput.addEventListener('keyup', searchHandler);
 starButton.addEventListener('click', filterByStar)
@@ -146,24 +145,6 @@ function findObject(event) {
   return targetObject
 }
 
-function updateTitle(event) {
-  if(event.target.classList.contains('div__h3--title')) {
-    var newTitle = event.target.closest('.div__h3--title').innerText;
-    var targetObject = findObject(event);
-    targetObject.title = newTitle;
-    targetObject.saveToStorage(ideasArray);
-  }
-}
-
-function updateBody(event) {
-  if(event.target.classList.contains('div__p--text')) {
-    var newBody = event.target.closest('.div__p--text').innerText;
-    var targetObject = findObject(event);
-    targetObject.body = newBody;
-    targetObject.saveToStorage(ideasArray);
-  }
-}
-
 function updateText(event) {
   if (event.target.classList.contains('div__h3--title') || event.target.classList.contains('div__p--text')) {
     var newTitle = event.target.closest('.section__article').querySelector('.div__h3--title').innerText;
@@ -185,8 +166,6 @@ function ideasMessage() {
 function listenForEnter(event) {
   if (event.key === 'Enter') {
     event.target.blur();
-    // updateBody();
-    // updatedTitle();
     updateText(event);
   }
 }
