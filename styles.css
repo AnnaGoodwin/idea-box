@@ -72,6 +72,11 @@ button {
   border-left: 10px solid #F58E72;
   padding-left: 10px;
 }
+.active {
+  background-color: #D14119;
+  border-left: 10px solid #F58E72;
+  padding-left: 10px;
+}
 
 .nav__div--stars {
   border-top: 2px solid #5356A4;

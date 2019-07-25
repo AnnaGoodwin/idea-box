@@ -272,15 +272,19 @@ bodyNav.addEventListener('click', getQuality);
 
 function toggleQuality(event) {
   var childrenArr = Array.from(event.target.parentNode.childNodes)
+  debugger;
   var index = childrenArr.findIndex(element => {
     return element.innerText === 'Show All Ideas'
   })
-  if (index === 7) {
+  if (index === 5) {
     childrenArr[index].innerText = qualityArray[0];
-  } else if (index === 9) {
+    childrenArr[5].classList.remove('active');
+  } else if (index === 7) {
     childrenArr[index].innerText = qualityArray[1];
-  } else if (index === 11) {
+    childrenArr[7].classList.remove('active');
+  } else if (index === 9) {
     childrenArr[index].innerText = qualityArray[2];
+    childrenArr[9].classList.remove('active');
   }
 }
 
@@ -291,6 +295,7 @@ function changeQualityText(event){
     toggleQuality(event)}
     else {
       toggleQuality(event);
+      event.target.classList.add('active')
       event.target.textContent = "Show All Ideas"};
   }
 
