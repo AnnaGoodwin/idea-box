@@ -32,9 +32,9 @@ class Idea {
   }
   
   updateQuality(qualityArray, ideaArray, buttonClass) {
-    if(buttonClass === 'button__img--upvote' && !(this.quality >= qualityArray.length -1 || this.quality < 0)){
+    if (buttonClass === 'button__img--upvote' && !(this.quality >= qualityArray.length -1 || this.quality < 0)){
       this.quality++;
-    } else if(buttonClass === 'button__img--downvote' && (this.quality > 0)) {
+    } else if (buttonClass === 'button__img--downvote' && (this.quality > 0)) {
       this.quality--;
     } else {
       return
@@ -45,5 +45,4 @@ class Idea {
   updateStar() {
     this.star = !this.star;
   }
-
 }

@@ -170,7 +170,6 @@ function toggleVote(event) {
     targetObj.changeQualityScore(event, upvoteClass);
     targetObj.setQualityText(event);
   }
-
   if (event.target.classList.contains(downvoteClass)) {
     targetObj.changeQualityScore(event, downvoteClass);
     targetObj.setQualityText(event);
