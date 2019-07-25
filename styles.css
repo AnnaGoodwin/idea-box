@@ -291,12 +291,6 @@ button {
   width: 100%;
 }
 
-.div__button--starred {
-  height: 30px;
-  margin-bottom: 20px;
-  width: 100%;
-}
-
 .nav__h3--quality {
   color: #BFBFDD;
   font-size: unset;
