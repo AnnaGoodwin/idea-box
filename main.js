@@ -57,7 +57,7 @@ function emptyInputs() {
 function handleSaveButton() {
   instaniateIdea();
   emptyInputs();
-  ideasMessage();
+  showMessage(ideasArray, 'Create Some Ideas!');
 }
 
 function handleCardInteractions() {
@@ -70,7 +70,7 @@ function handlePageLoad() {
   disableSaveButton();
   mapArray();
   showTen(ideasArray, tenArray = []);
-  ideasMessage();
+  showMessage(ideasArray, 'Create Some Ideas!');
 }
 
 function displayIdeaCard(newIdeaObj) {
@@ -110,7 +110,7 @@ function deleteIdeaCard(event) {
   if (event.target.classList.contains('header__img--x')) {
     event.target.parentNode.parentNode.remove();
     removeFromStorage(event);
-    ideasMessage();
+    showMessage(ideasArray, 'Create Some Ideas!');
   }
 }
 
@@ -149,15 +149,6 @@ function updateText(event) {
     var newBody = event.target.closest('.section__article').querySelector('.div__p--text').innerText;
     var targetObject = findObject(event);
     targetObject.updateIdea(newTitle, newBody, ideasArray);
-  }
-}
-
-function ideasMessage() {
-  if (ideasArray.length === 0) {
-    mainSectionBottom.insertAdjacentHTML('afterbegin', `<p id='ptag'>Create An Idea!</p>`);
-  } else {
-    var ideaMessage = document.querySelector('#ptag');
-    ideaMessage.remove();
   }
 }
 
@@ -231,6 +222,16 @@ function searchStar() {
   }
   persistCards(starArray);
   starButton.innerText = 'Show All Ideas';
+  showMessage(starArray, 'Star Some Ideas!')
+}
+
+function showMessage(array, message) {
+  if (array.length === 0) {
+    mainSectionBottom.insertAdjacentHTML('afterbegin', `<p id='ptag'>${message}</p>`);
+  } else {
+    var newMessage = document.querySelector('#ptag');
+    newMessage.remove();
+  }
 }
 
 function qualitySearch(qArray, qIndex, property) {
