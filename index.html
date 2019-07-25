@@ -8,20 +8,26 @@
   </head>
   <body>
     <nav class="body__nav">
-      <h1 class="nav__h1">IdeaBox Redux</h1>
-      <div class="nav__div--stars">
-        <p class="div__p">Filter Starred Ideas</p>
-        <button class="div__button--starred" type="button">Show Starred Ideas</button>
-      </div>
-      <h3 class="nav__h3--quality">Filter by Quality</h3>
-      <button class="nav__btn--swill quality-btn">Swill</button>
-      <button class="nav__btn--plausible quality-btn">Plausible</button>
-      <button class="nav__btn--genius quality-btn">Genius</button>
-      <form class="nav__form">
-        <label class="form__label--quality" for="new-quality">New Quality</label>
-        <input class="form__input--quality" type="text" id="new-quality">
-        <button class="form__button--quality" type="button">Add New Quality</button>
-      </form>  
+        <div class="nav__div">
+          <img class="div__img--hamburger" src="images/menu.svg">
+          <h1 class="nav__h1">IdeaBox Redux</h1>
+        </div>
+      <container class="nav__container1 hidden">
+        <div class="nav__div--stars">
+          <p class="div__p">Filter Starred Ideas</p>
+          <button class="div__button--starred" type="button">Show Starred Ideas</button>
+        </div>
+        <h3 class="nav__h3--quality">Filter by Quality</h3>
+        <button class="nav__btn--swill quality-btn">Swill</button>
+        <button class="nav__btn--plausible quality-btn">Plausible</button>
+        <button class="nav__btn--genius quality-btn">Genius</button>
+        <form class="nav__form">
+          <label class="form__label--quality" for="new-quality">New Quality</label>
+          <input class="form__input--quality" type="text" id="new-quality">
+          <button class="form__button--quality" type="button">Add New Quality</button>
+        <button class="form__btn--show" type="button">Show More</button>
+        </form> 
+      </container>
     </nav>
     <main class="body__main">
       <section class="main__section--top">
@@ -35,7 +41,6 @@
             <img class="img--search" src="images/search.svg" alt="search-icon">
             <input class="form__input--search form" type="text" placeholder="Search ideas">
           </container>
-            <!-- <button class="form__btn--show" type="button">Show More</button> -->
         </form>
       </section>
       <section class="main__section--bottom">

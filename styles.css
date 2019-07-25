@@ -26,10 +26,19 @@ nav {
   grid-row: 1 / span 2;
 }
 
+.div__img--hamburger {
+  display: none;
+}
+
 h1 {
   font-size: 1.3em;
   padding: 20px 5px;
   font-weight: 700;
+}
+
+.nav__container1 {
+  display: flex;
+  flex-direction: column;
 }
 
 .div__p {
@@ -109,7 +118,8 @@ button {
 }
 
 .div__button--starred,
-.form__button--quality {
+.form__button--quality,
+.form__btn--show {
   background-color: #5356A4;
   border-color:#353567;
   color: #FFFFFF;
@@ -119,8 +129,14 @@ button {
   height: 50px;
   border-radius: 2px;
 }
+
+.form__btn--show {
+  margin-top: 20px;
+}
+
 .div__button--starred:hover,
-.form__button--quality:hover {
+.form__button--quality:hover,
+.form__btn--show:hover {
   background-color: #D14119
 }
 .main__section--top {
@@ -311,15 +327,22 @@ article img {
     display: block;
   }
 
-  /*.section__form {
-    margin: 20px;
-    width: 100%;
-  }*/
+  .nav__div {
+    display: flex;
+  }
 
-  /*.section__article {
-    display: block;
-    margin: 20px auto;
-    width: 100%;
-  }*/
+  h1 {
+    margin: auto;
+  }
+  
+  .div__img--hamburger {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    margin: auto 10px;
+  }
 
+  .hidden {
+    display: none;
+  }
 }

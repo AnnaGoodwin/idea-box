@@ -4,13 +4,16 @@ var titleInput = document.querySelector('.form__input--title');
 var bodyInput = document.querySelector('.form__textarea--body');
 var form = document.querySelector('.section__form');
 var mainSectionBottom = document.querySelector('.main__section--bottom');
+var hamburger = document.querySelector('.div__img--hamburger')
+var navBar = document.querySelector('.nav__container1')
 var searchInput = document.querySelector('.form__input--search');
 var starButton = document.querySelector('.div__button--starred');
 var swillButton = document.querySelector('.nav__btn--swill');
 var plausibleButton = document.querySelector('.nav__btn--plausible');
 var geniusButton = document.querySelector('.nav__btn--genius');
 var ideasArray = [];
-var qualityArray = ['Swill', 'Plausible', 'Genius']; 
+var qualityArray = ['Swill', 'Plausible', 'Genius'];
+
 
 //**** On Page Load ******
 // Event Listeners
@@ -25,8 +28,20 @@ mainSectionBottom.addEventListener('keydown', listenForEnter);
 searchInput.addEventListener('keyup', searchHandler);
 starButton.addEventListener('click', filterByStar)
 document.querySelector('.body__nav').addEventListener('click', getQuality);
+hamburger.addEventListener('click', toggleHamburger)
 
-
+function toggleHamburger(event) {
+    if(navBar.classList.contains('hidden')) {
+      event.target.setAttribute('src', 'images/menu-close.svg');
+      navBar.classList.add('show');
+      navBar.classList.remove('hidden');
+      mainSectionBottom.style.opacity = '.2';
+    } else if(navBar.classList.contains('show')) {
+      event.target.setAttribute('src', 'images/menu.svg');
+      navBar.classList.add('hidden');
+      navBar.classList.remove('show');
+    }
+}
 
 // Functions
 function mapArray(){
