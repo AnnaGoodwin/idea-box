@@ -112,7 +112,7 @@ function deleteIdeaCard(event) {
   if (event.target.classList.contains('header__img--x')) {
     event.target.parentNode.parentNode.remove();
     removeFromStorage(event);
-    showBtnToggle()
+    showBtnToggle();
     showMessage(ideasArray, 'Create Some Ideas!');
   }
 }
@@ -143,7 +143,7 @@ function findTargetIndex(event) {
 function findObject(event) {
   var targetIdea = findTargetIndex(event);
   var targetObject = ideasArray[targetIdea];
-  return targetObject
+  return targetObject;
 }
 
 function updateText(event) {
@@ -225,7 +225,7 @@ function searchStar() {
   }
   persistCards(starArray);
   starButton.innerText = 'Show All Ideas';
-  showMessage(starArray, 'Star Some Ideas!')
+  showMessage(starArray, 'Star Some Ideas!');
 }
 
 function showMessage(array, message) {
@@ -316,9 +316,9 @@ function showTen(array1, array2) {
       array2.push(array1[i]);
     }
     array2.reverse();
-    persistCards(array2)
+    persistCards(array2);
   } else {
-    persistCards(array1)
+    persistCards(array1);
   }
 }
 
@@ -342,7 +342,7 @@ function showBtnToggle() {
   } else {
     showBtn.hidden = false;
     clearCards();
-    showTen(ideasArray, tenArray = [])
+    showTen(ideasArray, tenArray = []);
   }
 }
 function toggleHamburger(event) {
