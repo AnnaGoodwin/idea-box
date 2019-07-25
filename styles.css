@@ -25,15 +25,16 @@ nav {
   grid-row: 1 / span 2;
 }
 
-.div__img--hamburger {
-  display: none;
-}
-
 h1 {
   font-size: 1.3em;
   font-weight: 700;
   padding: 20px 5px;
 }
+
+.div__img--hamburger {
+  display: none;
+}
+
 
 .nav__container1 {
   display: flex;
@@ -158,6 +159,7 @@ button {
   height: 30px;
   margin-bottom: 20px;
 }
+
 form label {
   color: #1F1F3D;
   font-size: 1em;
@@ -321,7 +323,6 @@ article img {
     margin: 20px auto;
     width: 100%;
   }
-
 }
 
 @media screen and (max-width: 750px) {
@@ -329,14 +330,14 @@ article img {
     display: block;
   }
 
+  h1 {
+    margin: auto;
+  }
+
   .nav__div {
     display: flex;
   }
 
-  h1 {
-    margin: auto;
-  }
-  
   .div__img--hamburger {
     display: inline-block;
     height: 50px;
